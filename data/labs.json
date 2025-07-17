@@ -228,7 +228,8 @@
         "SG Shiroko Yumi",
         "Lightnode Limited ID",
         "Linode Shark ID",
-        "Alibaba Shark SG"
+        "Alibaba Shark SG",
+        "Internet Utilities NA LLC (SG)"
       ],
       "url": "https://1.1.1.1/generate_204",
       "interval": "1m30s",
@@ -541,6 +542,29 @@
         "path": "/8.219.126.137-491",
         "headers": {
           "Host": "yumicftigarun.web.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "Internet Utilities NA LLC (SG)",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+      "tls": {
+        "enabled": true,
+        "server_name": "nontontv.vidio.com.mayumi.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/64.49.14.41-8443",
+        "headers": {
+          "Host": "nontontv.vidio.com.mayumi.biz.id"
         }
       }
     }
