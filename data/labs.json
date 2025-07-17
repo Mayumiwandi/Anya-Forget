@@ -214,8 +214,7 @@
         "ID MITRA VISIONER Alya",
         "ID Amazon layla",
         "natanvpn",
-        "🦈 Shark",
-        "lightnode limited ws tls [alya]"
+        "🦈 Shark"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "1m30s",
@@ -540,29 +539,6 @@
       "transport": {
         "type": "ws",
         "path": "/8.219.126.137-491",
-        "headers": {
-          "Host": "yumicftigarun.web.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "lightnode limited ws tls [alya]",
-      "server": "yumicftigarun.web.id",
-      "server_port": 443,
-      "password": "2481488d-a890-4036-bc47-eeeabeac4f16",
-      "tls": {
-        "enabled": true,
-        "server_name": "yumicftigarun.web.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/154.90.48.27-56362",
         "headers": {
           "Host": "yumicftigarun.web.id"
         }
