@@ -214,7 +214,8 @@
         "ID MITRA VISIONER Alya",
         "ID Amazon layla",
         "natanvpn",
-        "🦈 Shark"
+        "🦈 Shark",
+        "Amazoncom Inc (ID)"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "1m30s",
@@ -563,6 +564,29 @@
       "transport": {
         "type": "ws",
         "path": "/64.49.14.41-8443",
+        "headers": {
+          "Host": "nontontv.vidio.com.mayumi.biz.id"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Amazoncom Inc (ID)",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+      "security": "zero",
+      "tls": {
+        "enabled": true,
+        "server_name": "nontontv.vidio.com.mayumi.biz.id",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.218.77.16-443",
         "headers": {
           "Host": "nontontv.vidio.com.mayumi.biz.id"
         }
