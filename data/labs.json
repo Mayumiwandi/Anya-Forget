@@ -212,8 +212,7 @@
       "type": "selector",
       "tag": "📍 Region",
       "outbounds": [
-        "SG Eons Data Alya",
-        "Celcom Axiata Berhad (MY)"
+        "SG Eons Data Alya"
       ],
       "default": "Celcom Axiata Berhad (MY)"
     },
@@ -396,27 +395,6 @@
         "path": "/38.181.70.7-16240",
         "headers": {
           "Host": "yumicftigarun.web.id"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "Celcom Axiata Berhad (MY)",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
-      "tls": {
-        "enabled": true,
-        "server_name": "nontontv.vidio.com.mayumi.biz.id",
-        "insecure": false,
-        "disable_sni": false
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/183.171.200.162-443",
-        "headers": {
-          "Host": "nontontv.vidio.com.mayumi.biz.id"
         }
       }
     },
