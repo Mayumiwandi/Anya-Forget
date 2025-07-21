@@ -213,7 +213,6 @@
       "tag": "📍 Region",
       "outbounds": [
         "SG Eons Data Alya",
-        "RackNerd LLC (US)",
         "Celcom Axiata Berhad (MY)"
       ],
       "default": "Celcom Axiata Berhad (MY)"
@@ -397,29 +396,6 @@
         "path": "/38.181.70.7-16240",
         "headers": {
           "Host": "yumicftigarun.web.id"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "RackNerd LLC (US)",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "nontontv.vidio.com.mayumi.biz.id",
-        "utls": {
-          "enabled": true
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/107.172.87.159-12354",
-        "headers": {
-          "Host": "nontontv.vidio.com.mayumi.biz.id"
         }
       }
     },
