@@ -146,7 +146,7 @@
         {
             "type": "mixed",
             "tag": "mixed-in",
-            "listen": "127.0.0.0",
+            "listen": "0.0.0.0",
             "listen_port": 2080,
             "tcp_fast_open": true,
             "sniff": true,
