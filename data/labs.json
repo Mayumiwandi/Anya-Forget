@@ -213,8 +213,7 @@
       "tag": "📍 Region",
       "outbounds": [
         "SG Eons Data Alya"
-      ],
-      "default": "Celcom Axiata Berhad (MY)"
+      ]
     },
     {
       "type": "selector",
