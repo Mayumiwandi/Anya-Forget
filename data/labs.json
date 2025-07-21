@@ -212,7 +212,8 @@
       "type": "selector",
       "tag": "📍 Region",
       "outbounds": [
-        "SG Eons Data Alya"
+        "SG Eons Data Alya",
+        "(MY) PQ HOSTING PLUS"
       ]
     },
     {
@@ -453,6 +454,29 @@
         "path": "/8.219.126.137-491",
         "headers": {
           "Host": "yumicftigarun.web.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "(MY) PQ HOSTING PLUS",
+      "server": "investor.fb.com",
+      "server_port": 443,
+      "uuid": "30e7d5fc-7d5e-4472-9053-c016bc107c6b",
+      "tls": {
+        "enabled": true,
+        "server_name": "investor.fb.com.violetvpn.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/my-pqhost",
+        "headers": {
+          "Host": "investor.fb.com.violetvpn.biz.id"
         }
       }
     }
