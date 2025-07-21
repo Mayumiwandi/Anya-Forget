@@ -26,7 +26,6 @@
             {
                 "tag": "dns-local",
                 "address": "local",
-                "address_resolver": "local",
                 "address_strategy": "prefer_ipv4",
                 "strategy": "ipv4_only"
             },
@@ -49,7 +48,7 @@
                     "quiz.int.vidio.com",
                     "quiz.vidio.com"
                 ],
-                "server": "cloudflare-dns",
+                "server": "dns-local",
                 "action": "route"
             },
             {
