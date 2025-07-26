@@ -170,7 +170,8 @@
         "shiroko vmess Linode",
         "ID MITRA VISIONER Alya",
         "ID Amazon layla",
-        "🦈 Shark"
+        "🦈 Shark",
+        "UDP-Bangjess"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "1m30s",
@@ -439,6 +440,29 @@
         "path": "/my-pqhost",
         "headers": {
           "Host": "investor.fb.com.violetvpn.biz.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "UDP-Bangjess",
+      "server": "df.game.naver.com",
+      "server_port": 443,
+      "password": "7fe0b1fa-7b57-46cb-bded-909d0dfb0b50",
+      "tls": {
+        "enabled": true,
+        "server_name": "bug.free.jeelsboobz.art",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/IfSZyRWbqp3lhW1Y5Jzv3tf0",
+        "headers": {
+          "Host": "bug.free.jeelsboobz.art"
         }
       }
     }
