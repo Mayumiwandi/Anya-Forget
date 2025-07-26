@@ -171,7 +171,8 @@
         "ID MITRA VISIONER Alya",
         "ID Amazon layla",
         "🦈 Shark",
-        "UDP-Bangjess"
+        "UDP-Bangjess",
+        "UCULSG (SG)"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "1m30s",
@@ -463,6 +464,29 @@
         "path": "/IfSZyRWbqp3lhW1Y5Jzv3tf0",
         "headers": {
           "Host": "bug.free.jeelsboobz.art"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "UCULSG (SG)",
+      "server": "investor.fb.com",
+      "server_port": 443,
+      "password": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+      "tls": {
+        "enabled": true,
+        "server_name": "investor.fb.com.mayumi.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/164.52.2.98-443",
+        "headers": {
+          "Host": "investor.fb.com.mayumi.biz.id"
         }
       }
     }
