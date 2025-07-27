@@ -291,10 +291,10 @@
             "tls": {
                 "enabled": true,
                 "server_name": "shiroko.shirokoyumi.workers.dev",
+                "insecure": false,
                 "utls": {
                     "enabled": true,
-                    "fingerprint": "chrome",
-                    "insecure": false
+                    "fingerprint": "chrome"
                 }
             },
             "transport": {
