@@ -104,7 +104,7 @@
       }
     ],
     "fakeip": {
-      "enabled": true,
+      "enabled": false,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
@@ -174,7 +174,7 @@
         "UCULSG (SG)"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
-      "interval": "1m30s",
+      "interval": "1m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
     },
@@ -188,7 +188,7 @@
         "Alibaba Shark SG"
       ],
       "url": "https://1.1.1.1/generate_204",
-      "interval": "1m30s",
+      "interval": "3m30s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
     },
@@ -223,7 +223,7 @@
         "direct-out",
         "🌐 Internet"
       ],
-      "default": "🌐 Internet"
+      "default": "direct-out"
     },
     {
       "type": "direct",
