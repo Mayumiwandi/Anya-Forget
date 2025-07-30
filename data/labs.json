@@ -157,8 +157,7 @@
             "tag": "🌐 Internet",
             "outbounds": [
                 "🚀 Latency",
-                "📍 Region",
-                "🦈 Shark"
+                "📍 Region"
             ],
             "default": "🚀 Latency"
         },
