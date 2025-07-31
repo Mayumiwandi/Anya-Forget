@@ -10,12 +10,14 @@
             {
                 "tag": "google-dns",
                 "address": "tls://dns.google",
+                "address_resolver": "cloudflare-dns",
                 "address_strategy": "prefer_ipv4",
                 "strategy": "ipv4_only"
             },
             {
                 "tag": "cloudflare-dns",
                 "address": "tls://1.1.1.1",
+                "address_resolver": "dns-local",
                 "address_strategy": "prefer_ipv4",
                 "strategy": "ipv4_only"
             },
