@@ -58,7 +58,7 @@
                     "yumicftigarun.web.id",
                     "investor.fb.com.violetvpn.biz.id"
                 ],
-                "server": "cloudflare-dns",
+                "server": "google-dns",
                 "action": "route"
             }
         ],
