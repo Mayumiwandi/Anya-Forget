@@ -172,8 +172,8 @@
                 "UCULSG (SG)",
                 "Ava-afrcloud"
             ],
-            "url": "https://1.1.1.1/generate_204",
-            "interval": "1m0s",
+            "url": "https://connectivitycheck.gstatic.com/generate_204",
+            "interval": "3m0s",
             "tolerance": 60,
             "idle_timeout": "5m0s"
         },
