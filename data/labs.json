@@ -380,6 +380,9 @@
   "route": {
     "rules": [
       {
+        "inbound": [
+          "direct-in"
+        ],
         "rule_set": [
           "geosite-wa",
           "whatsapp_rules"
