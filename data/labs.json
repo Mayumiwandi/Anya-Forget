@@ -145,7 +145,8 @@
       "type": "selector",
       "tag": "📍 Region",
       "outbounds": [
-        "(MY) PQ HOSTING PLUS"
+        "(MY) PQ HOSTING PLUS",
+        "SG 6 COLLYER QUAY TLS [delulu]"
       ]
     },
     {
@@ -347,6 +348,29 @@
       "transport": {
         "type": "ws",
         "path": "/149.129.250.8-443",
+        "headers": {
+          "Host": "celeliaamelia.biz.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "SG 6 COLLYER QUAY TLS [delulu]",
+      "server": "plus-store.naver.com",
+      "server_port": 443,
+      "uuid": "885ee2c9-9df6-4c4b-8625-df30df115fb3",
+      "tls": {
+        "enabled": true,
+        "server_name": "celeliaamelia.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.128.95.110-40029",
         "headers": {
           "Host": "celeliaamelia.biz.id"
         }
