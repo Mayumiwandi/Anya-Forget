@@ -133,7 +133,8 @@
         "ID Amazon layla",
         "UCULSG (SG)",
         "Ava-afrcloud",
-        "ID PT MITRA VISIONER PRATAMA TLS [delulu]"
+        "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
+        "ID 21F Ciputra World 1 DBS  [delulu]"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -325,6 +326,29 @@
         "path": "/206.84.101.83-8443",
         "headers": {
           "Host": "investor.fb.com.celeliaamelia.biz.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "ID 21F Ciputra World 1 DBS  [delulu]",
+      "server": "plus-store.naver.com",
+      "server_port": 443,
+      "password": "7335c5be-70f3-41db-bfcd-2bac1951020b",
+      "tls": {
+        "enabled": true,
+        "server_name": "celeliaamelia.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/149.129.250.8-443",
+        "headers": {
+          "Host": "celeliaamelia.biz.id"
         }
       }
     }
