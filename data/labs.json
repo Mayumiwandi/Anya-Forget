@@ -380,6 +380,10 @@
   "route": {
     "rules": [
       {
+        "inbound": [
+            "direct-in",
+            "mixed-in"
+        ],
         "package_name": [
           "com.whatsapp",
           "com.whatsapp.w4b"
