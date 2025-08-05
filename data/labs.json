@@ -71,36 +71,6 @@
                 "outbound": "📍 Region",
                 "server": "google-dns",
                 "rewrite_ttl": 7200
-            },
-            {
-                "outbound": "🔞 Porn",
-                "server": "block-dns"
-            },
-            {
-                "outbound": "🎯 Ads",
-                "server": "block-dns"
-            },
-            {
-                "domain_suffix": [
-                    "dailymotion.com",
-                    "dm-event.net",
-                    "dmcdn.net",
-                    "maki.my.id",
-                    "kuramanime.run",
-                    "filemoon.sx",
-                    "mega.co.nz",
-                    "ghbrisk.com"
-                ],
-                "rule_set": [
-                    "geosite-youtube",
-                    "geosite-openai",
-                    "geosite-google",
-                    "geoip-id"
-                ],
-                "outbound": "🌐 Internet",
-                "action": "route",
-                "server": "google-dns",
-                "rewrite_ttl": 7200
             }
         ],
         "fakeip": {
@@ -109,9 +79,18 @@
             "inet6_range": "fc00::/18"
         },
         "strategy": "ipv4_only",
-        "independent_cache": true
+        "independent_cache": false
     },
     "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 9001,
+            "tcp_fast_open": true,
+            "sniff": true,
+            "sniff_override_destination": true
+        },
         {
             "type": "tun",
             "tag": "tun-in",
@@ -123,32 +102,16 @@
             ],
             "auto_route": true,
             "strict_route": true,
-            "stack": "gvisor",
+            "stack": "system",
             "sniff": true,
             "endpoint_independent_nat": true
-        },
-        {
-            "type": "mixed",
-            "tag": "mixed-in",
-            "listen": "0.0.0.0",
-            "listen_port": 9001,
-            "tcp_fast_open": true,
-            "sniff": true,
-            "sniff_override_destination": true
-        },
-        {
-            "type": "socks",
-            "tag": "socks-in",
-            "listen": "0.0.0.0",
-            "listen_port": 9001,
-            "tcp_fast_open": true
         },
         {
             "type": "direct",
             "tag": "direct-in",
             "override_address": "112.215.203.246",
             "override_port": 53,
-            "detour": "direct-out"
+            "detour": "Local N"
         }
     ],
     "outbounds": [
@@ -187,32 +150,16 @@
         },
         {
             "type": "selector",
-            "tag": "🔞 Porn",
-            "outbounds": [
-                "block",
-                "🌐 Internet"
-            ]
-        },
-        {
-            "type": "selector",
-            "tag": "🎯 Ads",
-            "outbounds": [
-                "block",
-                "🌐 Internet"
-            ]
-        },
-        {
-            "type": "selector",
             "tag": "📞 Rule-WA",
             "outbounds": [
-                "direct-out",
+                "Local N",
                 "🌐 Internet"
             ],
-            "default": "direct-out"
+            "default": "Local N"
         },
         {
             "type": "direct",
-            "tag": "direct-out"
+            "tag": "Local N"
         },
         {
             "type": "block",
@@ -411,8 +358,9 @@
     "route": {
         "rules": [
             {
-                "inbound": [
-                    "direct-in"
+                "package_name": [
+                    "com.whatsapp",
+                    "com.whatsapp.w4b"
                 ],
                 "rule_set": [
                     "geosite-wa",
@@ -439,10 +387,6 @@
                 ],
                 "domain_keyword": [
                     "whatsapp"
-                ],
-                "package_name": [
-                    "com.whatsapp",
-                    "com.whatsapp.w4b"
                 ],
                 "ip_cidr": [
                     "158.85.224.160/27",
@@ -472,89 +416,6 @@
                     }
                 ],
                 "action": "hijack-dns"
-            },
-            {
-                "rule_set": [
-                    "pornholeindo",
-                    "category-porn",
-                    "nsfw-onlydomains",
-                    "porn-ags"
-                ],
-                "domain_keyword": [
-                    "avtube"
-                ],
-                "outbound": "🔞 Porn"
-            },
-            {
-                "rule_set": [
-                    "geosite-rule-ads",
-                    "Ads-Adaway",
-                    "Ads-Abpindo",
-                    "GoodbyeAds-YouTube-AdBlock-Filter",
-                    "gambling-ags",
-                    "gambling-onlydomains",
-                    "native.amazon",
-                    "native.oppo-realme",
-                    "native.tiktok.extended",
-                    "native.tiktok",
-                    "native.vivo",
-                    "native.xiaomi"
-                ],
-                "domain_keyword": [
-                    "data togel"
-                ],
-                "outbound": "🎯 Ads"
-            },
-            {
-                "domain_suffix": [
-                    "dailymotion.com",
-                    "maki.my.id",
-                    "kuramanime.run",
-                    "filemoon.sx",
-                    "mega.co.nz",
-                    "ghbrisk.com"
-                ],
-                "rule_set": [
-                    "geosite-youtube",
-                    "geosite-openai",
-                    "geosite-google",
-                    "geoip-id"
-                ],
-                "inbound": [
-                    "direct-in"
-                ],
-                "outbound": "🌐 Internet",
-                "action": "route"
-            },
-            {
-                "inbound": [
-                    "mixed-in"
-                ],
-                "ip_is_private": true,
-                "rule_set": "geoip-id",
-                "outbound": "🌐 Internet"
-            },
-            {
-                "rule_set": [
-                    "geosite-facebook1",
-                    "geosite-facebook3",
-                    "facebook-dev",
-                    "facebook-ipcidr",
-                    "geosite-instagram",
-                    "geosite-discord",
-                    "geosite-tiktok",
-                    "AS32934",
-                    "Google-AS15169",
-                    "google-ipcidr",
-                    "google-scholar",
-                    "speedtest",
-                    "messenger"
-                ],
-                "inbound": [
-                    "direct-in"
-                ],
-                "outbound": "🌐 Internet",
-                "action": "route"
             }
         ],
         "rule_set": [
@@ -567,240 +428,9 @@
             },
             {
                 "type": "remote",
-                "tag": "geosite-rule-ads",
-                "format": "binary",
-                "url": "https://github.com/dickymuliafiqri/sing-box-examples/releases/download/latest/geosite-rule-ads.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "Ads-Adaway",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/adaway.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "Ads-Abpindo",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/abpindo.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "pornholeindo",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/pornholeindo.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "category-porn",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geoip-id",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/id.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-facebook1",
-                "format": "binary",
-                "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-facebook.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-facebook3",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/facebook.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "facebook-dev",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/facebook-dev.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "facebook-ipcidr",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/facebook.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-instagram",
-                "format": "binary",
-                "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-instagram.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "messenger",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/messenger.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-youtube",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/youtube.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-openai",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/openai.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
                 "tag": "geosite-wa",
                 "format": "binary",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/whatsapp.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-google",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/google.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "google-ipcidr",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/google.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-discord",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/discord.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-tiktok",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/tiktok.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "AS32934",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/asn/AS132934.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "Google-AS15169",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/asn/AS15169.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "google-scholar",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google-scholar.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "speedtest",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/speedtest.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "GoodbyeAds-YouTube-AdBlock-Filter",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/GoodbyeAds-YouTube-AdBlock-Filter.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "gambling-ags",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/gambling-ags.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "gambling-onlydomains",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/gambling-onlydomains.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.amazon",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.amazon.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.oppo-realme",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.oppo-realme.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.tiktok.extended",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.tiktok.extended.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.tiktok",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.tiktok.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.vivo",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.vivo.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "native.xiaomi",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.xiaomi.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "nsfw-onlydomains",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/nsfw-onlydomains.srs",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "porn-ags",
-                "format": "binary",
-                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/porn-ags.srs",
                 "download_detour": "🌐 Internet"
             }
         ],
