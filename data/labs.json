@@ -130,7 +130,6 @@
       "outbounds": [
         "siren nayumi vmess",
         "shiroko vmess Linode",
-        "ID MITRA VISIONER Alya",
         "ID Amazon layla",
         "UCULSG (SG)",
         "Ava-afrcloud"
@@ -233,29 +232,6 @@
         "path": "/43.218.77.16-443",
         "headers": {
           "Host": "layla.mayumiyui.my.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID MITRA VISIONER Alya",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "password": "4ed8580c-8262-460a-8037-deee874c65be",
-      "tls": {
-        "enabled": true,
-        "server_name": "yumicftigarun.web.id",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/172.252.8.168-443",
-        "headers": {
-          "Host": "yumicftigarun.web.id"
         }
       }
     },
