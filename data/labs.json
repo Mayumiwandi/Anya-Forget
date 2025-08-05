@@ -132,7 +132,8 @@
         "shiroko vmess Linode",
         "ID Amazon layla",
         "UCULSG (SG)",
-        "Ava-afrcloud"
+        "Ava-afrcloud",
+        "ID PT MITRA VISIONER PRATAMA TLS [delulu]"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -301,6 +302,29 @@
         "path": "/trojan",
         "headers": {
           "Host": "ava.game.naver.com.afrcloud.web.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
+      "server": "investor.fb.com",
+      "server_port": 443,
+      "password": "3db9d9d4-bca7-4421-ba7d-9a754e488490",
+      "tls": {
+        "enabled": true,
+        "server_name": "investor.fb.com.celeliaamelia.biz.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/206.84.101.83-8443",
+        "headers": {
+          "Host": "investor.fb.com.celeliaamelia.biz.id"
         }
       }
     }
