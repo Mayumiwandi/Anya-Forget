@@ -1,476 +1,469 @@
 {
-  "log": {
-    "disabled": true,
-    "level": "debug",
-    "output": "Nekobox.log",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "google-dns",
-        "address": "tls://dns.google",
-        "address_resolver": "dns-local",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "ipv4_only",
-        "detour": "🚀 Latency"
-      },
-      {
-        "tag": "cloudflare-dns",
-        "address": "tls://1.1.1.1",
-        "address_resolver": "dns-local",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "ipv4_only",
-        "detour": "📍 Region"
-      },
-      {
-        "tag": "dns-local",
-        "address": "local",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "ipv4_only"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success",
-        "detour": "block"
-      }
-    ],
-    "rules": [
-      {
-        "domain": [
-          "plus-store.naver.com",
-          "ava.game.naver.com",
-          "investor.fb.com",
-          "investors.spotify.com",
-          "nontontv.vidio.com",
-          "support.vidio.com",
-          "img.email2.vidio.com",
-          "quiz.int.vidio.com",
-          "quiz.vidio.com"
+    "log": {
+        "disabled": true,
+        "level": "debug",
+        "output": "Nekobox.log",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "google-dns",
+                "address": "tls://dns.google",
+                "address_resolver": "dns-local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only",
+                "detour": "🚀 Latency"
+            },
+            {
+                "tag": "cloudflare-dns",
+                "address": "tls://1.1.1.1",
+                "address_resolver": "dns-local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only",
+                "detour": "📍 Region"
+            },
+            {
+                "tag": "dns-local",
+                "address": "local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only"
+            },
+            {
+                "tag": "block-dns",
+                "address": "rcode://success",
+                "detour": "block"
+            }
         ],
-        "server": "dns-local",
-        "action": "route"
-      },
-      {
-        "domain": [
-          "13.round.web.id",
-          "siren.nayumiwandi.workers.dev",
-          "shiroko.shirokoyumi.workers.dev",
-          "layla.mayumiyui.my.id",
-          "yumicftigarun.web.id"
+        "rules": [
+            {
+                "domain": [
+                    "plus-store.naver.com",
+                    "ava.game.naver.com",
+                    "investor.fb.com",
+                    "investors.spotify.com",
+                    "nontontv.vidio.com",
+                    "support.vidio.com",
+                    "img.email2.vidio.com",
+                    "quiz.int.vidio.com",
+                    "quiz.vidio.com"
+                ],
+                "server": "dns-local",
+                "action": "route"
+            },
+            {
+                "domain": [
+                    "13.round.web.id",
+                    "siren.nayumiwandi.workers.dev",
+                    "shiroko.shirokoyumi.workers.dev",
+                    "layla.mayumiyui.my.id",
+                    "yumicftigarun.web.id"
+                ],
+                "server": "google-dns",
+                "action": "route"
+            },
+            {
+                "outbound": "🚀 Latency",
+                "server": "google-dns",
+                "rewrite_ttl": 7200
+            },
+            {
+                "outbound": "📍 Region",
+                "server": "google-dns",
+                "rewrite_ttl": 7200
+            }
         ],
-        "server": "google-dns",
-        "action": "route"
-      },
-      {
-        "outbound": "🚀 Latency",
-        "server": "google-dns",
-        "rewrite_ttl": 7200
-      },
-      {
-        "outbound": "📍 Region",
-        "server": "google-dns",
-        "rewrite_ttl": 7200
-      }
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
+        },
+        "strategy": "ipv4_only",
+        "independent_cache": false
+    },
+    "inbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-in",
+            "override_address": "112.215.203.246",
+            "override_port": 53,
+            "detour": "Local N"
+        },
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 9001,
+            "tcp_fast_open": true,
+            "sniff": true,
+            "sniff_override_destination": true
+        },
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "interface_name": "tunelm0n",
+            "mtu": 1590,
+            "address": [
+                "172.18.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
+            "auto_route": true,
+            "strict_route": false,
+            "stack": "system",
+            "sniff": true,
+            "endpoint_independent_nat": true
+        }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "strategy": "ipv4_only",
-    "independent_cache": false
-  },
-  "inbounds": [
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 9001,
-      "tcp_fast_open": true,
-      "sniff": true,
-      "sniff_override_destination": true
-    },
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "tunelm0n",
-      "mtu": 1590,
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "auto_route": true,
-      "strict_route": false,
-      "stack": "system",
-      "sniff": true,
-      "endpoint_independent_nat": true
-    },
-    {
-      "type": "direct",
-      "tag": "direct-in",
-      "override_address": "112.215.203.246",
-      "override_port": 53,
-      "detour": "Local N"
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "🌐 Internet",
-      "outbounds": [
-        "🚀 Latency",
-        "📍 Region"
-      ],
-      "default": "🚀 Latency"
-    },
-    {
-      "type": "urltest",
-      "tag": "🚀 Latency",
-      "outbounds": [
-        "siren nayumi vmess",
-        "shiroko vmess Linode",
-        "ID Amazon layla",
-        "UCULSG (SG)",
-        "Ava-afrcloud",
-        "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
-        "ID 21F Ciputra World 1 DBS  [delulu]"
-      ],
-      "url": "https://connectivitycheck.gstatic.com/generate_204",
-      "interval": "3m0s",
-      "tolerance": 60,
-      "idle_timeout": "5m0s"
-    },
-    {
-      "type": "selector",
-      "tag": "📍 Region",
-      "outbounds": [
-        "(MY) PQ HOSTING PLUS",
-        "SG 6 COLLYER QUAY TLS [delulu]"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "📞 Rule-WA",
-      "outbounds": [
-        "Local N",
-        "🌐 Internet"
-      ],
-      "default": "Local N"
-    },
-    {
-      "type": "direct",
-      "tag": "Local N"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "type": "vmess",
-      "tag": "siren nayumi vmess",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "siren.nayumiwandi.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
+    "outbounds": [
+        {
+            "type": "selector",
+            "tag": "🌐 Internet",
+            "outbounds": [
+                "🚀 Latency",
+                "📍 Region"
+            ],
+            "default": "🚀 Latency"
+        },
+        {
+            "type": "urltest",
+            "tag": "🚀 Latency",
+            "outbounds": [
+                "siren nayumi vmess",
+                "shiroko vmess Linode",
+                "ID Amazon layla",
+                "UCULSG (SG)",
+                "Ava-afrcloud",
+                "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
+                "ID 21F Ciputra World 1 DBS  [delulu]"
+            ],
+            "url": "https://connectivitycheck.gstatic.com/generate_204",
+            "interval": "3m0s",
+            "tolerance": 60,
+            "idle_timeout": "5m0s"
+        },
+        {
+            "type": "selector",
+            "tag": "📍 Region",
+            "outbounds": [
+                "(MY) PQ HOSTING PLUS",
+                "SG 6 COLLYER QUAY TLS [delulu]"
+            ]
+        },
+        {
+            "type": "direct",
+            "tag": "Local N"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "vmess",
+            "tag": "siren nayumi vmess",
+            "tcp_fast_open": true,
+            "server": "plus-store.naver.com",
+            "server_port": 443,
+            "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "siren.nayumiwandi.workers.dev",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "firefox"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/ID",
+                "headers": {
+                    "Host": "siren.nayumiwandi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "shiroko vmess Linode",
+            "tcp_fast_open": true,
+            "server": "plus-store.naver.com",
+            "server_port": 443,
+            "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "shiroko.shirokoyumi.workers.dev",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "firefox"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/172.232.234.155-74",
+                "headers": {
+                    "Host": "shiroko.shirokoyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID Amazon layla",
+            "server": "plus-store.naver.com",
+            "tcp_fast_open": true,
+            "server_port": 443,
+            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "layla.mayumiyui.my.id",
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-443",
+                "headers": {
+                    "Host": "layla.mayumiyui.my.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "(MY) PQ HOSTING PLUS",
+            "server": "investor.fb.com",
+            "server_port": 443,
+            "uuid": "30e7d5fc-7d5e-4472-9053-c016bc107c6b",
+            "tls": {
+                "enabled": true,
+                "server_name": "investor.fb.com.violetvpn.biz.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "firefox"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/my-pqhost",
+                "headers": {
+                    "Host": "investor.fb.com.violetvpn.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "UCULSG (SG)",
+            "server": "investor.fb.com",
+            "server_port": 443,
+            "password": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+            "tls": {
+                "enabled": true,
+                "server_name": "investor.fb.com.mayumi.biz.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/164.52.2.98-443",
+                "headers": {
+                    "Host": "investor.fb.com.mayumi.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ava-afrcloud",
+            "server": "ava.game.naver.com",
+            "server_port": 443,
+            "password": "O2-6fSLD2Mzl1ztj1i5JLA",
+            "tls": {
+                "enabled": true,
+                "server_name": "ava.game.naver.com.afrcloud.web.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/trojan",
+                "headers": {
+                    "Host": "ava.game.naver.com.afrcloud.web.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
+            "server": "investor.fb.com",
+            "server_port": 443,
+            "password": "3db9d9d4-bca7-4421-ba7d-9a754e488490",
+            "tls": {
+                "enabled": true,
+                "server_name": "investor.fb.com.celeliaamelia.biz.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/206.84.101.83-8443",
+                "headers": {
+                    "Host": "investor.fb.com.celeliaamelia.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID 21F Ciputra World 1 DBS  [delulu]",
+            "server": "plus-store.naver.com",
+            "server_port": 443,
+            "password": "7335c5be-70f3-41db-bfcd-2bac1951020b",
+            "tls": {
+                "enabled": true,
+                "server_name": "celeliaamelia.biz.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/149.129.250.8-443",
+                "headers": {
+                    "Host": "celeliaamelia.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG 6 COLLYER QUAY TLS [delulu]",
+            "server": "plus-store.naver.com",
+            "server_port": 443,
+            "uuid": "885ee2c9-9df6-4c4b-8625-df30df115fb3",
+            "tls": {
+                "enabled": true,
+                "server_name": "celeliaamelia.biz.id",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.128.95.110-40029",
+                "headers": {
+                    "Host": "celeliaamelia.biz.id"
+                }
+            }
         }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/ID",
-        "headers": {
-          "Host": "siren.nayumiwandi.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "shiroko vmess Linode",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "shiroko.shirokoyumi.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/172.232.234.155-74",
-        "headers": {
-          "Host": "shiroko.shirokoyumi.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "ID Amazon layla",
-      "server": "plus-store.naver.com",
-      "tcp_fast_open": true,
-      "server_port": 443,
-      "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "layla.mayumiyui.my.id",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/43.218.77.16-443",
-        "headers": {
-          "Host": "layla.mayumiyui.my.id"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "(MY) PQ HOSTING PLUS",
-      "server": "investor.fb.com",
-      "server_port": 443,
-      "uuid": "30e7d5fc-7d5e-4472-9053-c016bc107c6b",
-      "tls": {
-        "enabled": true,
-        "server_name": "investor.fb.com.violetvpn.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/my-pqhost",
-        "headers": {
-          "Host": "investor.fb.com.violetvpn.biz.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "UCULSG (SG)",
-      "server": "investor.fb.com",
-      "server_port": 443,
-      "password": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
-      "tls": {
-        "enabled": true,
-        "server_name": "investor.fb.com.mayumi.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/164.52.2.98-443",
-        "headers": {
-          "Host": "investor.fb.com.mayumi.biz.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "Ava-afrcloud",
-      "server": "ava.game.naver.com",
-      "server_port": 443,
-      "password": "O2-6fSLD2Mzl1ztj1i5JLA",
-      "tls": {
-        "enabled": true,
-        "server_name": "ava.game.naver.com.afrcloud.web.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/trojan",
-        "headers": {
-          "Host": "ava.game.naver.com.afrcloud.web.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID PT MITRA VISIONER PRATAMA TLS [delulu]",
-      "server": "investor.fb.com",
-      "server_port": 443,
-      "password": "3db9d9d4-bca7-4421-ba7d-9a754e488490",
-      "tls": {
-        "enabled": true,
-        "server_name": "investor.fb.com.celeliaamelia.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/206.84.101.83-8443",
-        "headers": {
-          "Host": "investor.fb.com.celeliaamelia.biz.id"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID 21F Ciputra World 1 DBS  [delulu]",
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "password": "7335c5be-70f3-41db-bfcd-2bac1951020b",
-      "tls": {
-        "enabled": true,
-        "server_name": "celeliaamelia.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/149.129.250.8-443",
-        "headers": {
-          "Host": "celeliaamelia.biz.id"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "SG 6 COLLYER QUAY TLS [delulu]",
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "885ee2c9-9df6-4c4b-8625-df30df115fb3",
-      "tls": {
-        "enabled": true,
-        "server_name": "celeliaamelia.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/43.128.95.110-40029",
-        "headers": {
-          "Host": "celeliaamelia.biz.id"
-        }
-      }
-    }
-  ],
-  "route": {
-    "rules": [
-      {
-        "inbound": [
-          "direct-in"
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "direct-in"
+                ],
+                "rule_set": [
+                    "geosite-wa",
+                    "whatsapp_rules"
+                ],
+                "domain_suffix": [
+                    "wa.me",
+                    "whatsapp-plus.info",
+                    "whatsapp-plus.me",
+                    "whatsapp-plus.net",
+                    "whatsapp.cc",
+                    "whatsapp.biz",
+                    "whatsapp.com",
+                    "whatsapp.info",
+                    "whatsapp.net",
+                    "whatsapp.org",
+                    "whatsapp.tv",
+                    "whatsappbrand.com",
+                    "graph.whatsapp.com",
+                    "graph.whatsapp.net"
+                ],
+                "domain": [
+                    "graph.facebook.com"
+                ],
+                "domain_keyword": [
+                    "whatsapp"
+                ],
+                "ip_cidr": [
+                    "158.85.224.160/27",
+                    "158.85.46.128/27",
+                    "158.85.5.192/27",
+                    "173.192.222.160/27",
+                    "173.192.231.32/27",
+                    "18.194.0.0/15",
+                    "184.173.128.0/17",
+                    "208.43.122.128/27",
+                    "34.224.0.0/12",
+                    "50.22.198.204/30",
+                    "54.242.0.0/15"
+                ],
+                "outbound": "Local N",
+                "ip_is_private": true
+            },
+            {
+                "package_name": [
+                    "com.whatsapp",
+                    "com.whatsapp.w4b"
+                ],
+                "outbound": "Local N"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "protocol": "dns"
+                    },
+                    {
+                        "port": 53
+                    }
+                ],
+                "action": "hijack-dns"
+            }
         ],
         "rule_set": [
-          "geosite-wa",
-          "whatsapp_rules"
+            {
+                "type": "remote",
+                "tag": "whatsapp_rules",
+                "format": "source",
+                "url": "https://raw.githubusercontent.com/Mayumiwandi/Lecilia/refs/heads/main/rules/whatsapp_rules.json",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-wa",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/whatsapp.srs",
+                "download_detour": "🌐 Internet"
+            }
         ],
-        "domain_suffix": [
-          "wa.me",
-          "whatsapp-plus.info",
-          "whatsapp-plus.me",
-          "whatsapp-plus.net",
-          "whatsapp.cc",
-          "whatsapp.biz",
-          "whatsapp.com",
-          "whatsapp.info",
-          "whatsapp.net",
-          "whatsapp.org",
-          "whatsapp.tv",
-          "whatsappbrand.com",
-          "graph.whatsapp.com",
-          "graph.whatsapp.net"
-        ],
-        "domain": [
-          "graph.facebook.com"
-        ],
-        "domain_keyword": [
-          "whatsapp"
-        ],
-        "ip_cidr": [
-          "158.85.224.160/27",
-          "158.85.46.128/27",
-          "158.85.5.192/27",
-          "173.192.222.160/27",
-          "173.192.231.32/27",
-          "18.194.0.0/15",
-          "184.173.128.0/17",
-          "208.43.122.128/27",
-          "34.224.0.0/12",
-          "50.22.198.204/30",
-          "54.242.0.0/15"
-        ],
-        "outbound": "📞 Rule-WA",
-        "ip_is_private": true
-      },
-      "package_name": [
-          "com.whatsapp",
-          "com.whatsapp.w4b"
-        ],
-      "outbound": "Local N"
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "protocol": "dns"
-          },
-          {
-            "port": 53
-          }
-        ],
-        "action": "hijack-dns"
-      }
-    ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "whatsapp_rules",
-        "format": "source",
-        "url": "https://raw.githubusercontent.com/Mayumiwandi/Lecilia/refs/heads/main/rules/whatsapp_rules.json",
-        "download_detour": "🌐 Internet"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-wa",
-        "format": "binary",
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/whatsapp.srs",
-        "download_detour": "🌐 Internet"
-      }
-    ],
-    "final": "🌐 Internet",
-    "auto_detect_interface": true
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "dist",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
-      "external_ui_download_detour": "🌐 Internet",
-      "default_mode": "rule",
-      "access_control_allow_origin": "*"
+        "final": "🌐 Internet",
+        "auto_detect_interface": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9090",
+            "external_ui": "dist",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
+            "external_ui_download_detour": "🌐 Internet",
+            "default_mode": "rule",
+            "access_control_allow_origin": "*"
+        }
     }
-  }
 }
