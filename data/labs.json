@@ -380,13 +380,6 @@
   "route": {
     "rules": [
       {
-        "inbound": [
-            "mixed-in"
-        ],
-        "package_name": [
-          "com.whatsapp",
-          "com.whatsapp.w4b"
-        ],
         "rule_set": [
           "geosite-wa",
           "whatsapp_rules"
@@ -429,6 +422,11 @@
         "outbound": "📞 Rule-WA",
         "ip_is_private": true
       },
+      "package_name": [
+          "com.whatsapp",
+          "com.whatsapp.w4b"
+        ],
+      "outbound": "Local N"
       {
         "type": "logical",
         "mode": "or",
