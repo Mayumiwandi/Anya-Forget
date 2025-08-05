@@ -381,7 +381,6 @@
     "rules": [
       {
         "inbound": [
-            "direct-in",
             "mixed-in"
         ],
         "package_name": [
