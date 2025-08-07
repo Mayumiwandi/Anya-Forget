@@ -48,7 +48,7 @@
                     "quiz.int.vidio.com",
                     "quiz.vidio.com",
                     "v8.kuramanime.run",
-                    "kuramanime.run""
+                    "kuramanime.run"
                 ],
                 "server": "dns-local",
                 "action": "route"
