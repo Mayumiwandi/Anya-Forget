@@ -46,7 +46,9 @@
                     "support.vidio.com",
                     "img.email2.vidio.com",
                     "quiz.int.vidio.com",
-                    "quiz.vidio.com"
+                    "quiz.vidio.com",
+                    "v8.kuramanime.run",
+                    "kuramanime.run""
                 ],
                 "server": "dns-local",
                 "action": "route"
@@ -64,13 +66,11 @@
             },
             {
                 "outbound": "🚀 Latency",
-                "server": "google-dns",
-                "rewrite_ttl": 7200
+                "server": "google-dns"
             },
             {
                 "outbound": "📍 Region",
-                "server": "google-dns",
-                "rewrite_ttl": 7200
+                "server": "google-dns"
             }
         ],
         "fakeip": {
