@@ -374,10 +374,6 @@
                 "inbound": [
                     "direct-in"
                 ],
-                "rule_set": [
-                    "geosite-wa",
-                    "whatsapp_rules"
-                ],
                 "domain_suffix": [
                     "wa.me",
                     "whatsapp-plus.info",
@@ -435,22 +431,6 @@
                     }
                 ],
                 "action": "hijack-dns"
-            }
-        ],
-        "rule_set": [
-            {
-                "type": "remote",
-                "tag": "whatsapp_rules",
-                "format": "source",
-                "url": "https://raw.githubusercontent.com/Mayumiwandi/Lecilia/refs/heads/main/rules/whatsapp_rules.json",
-                "download_detour": "🌐 Internet"
-            },
-            {
-                "type": "remote",
-                "tag": "geosite-wa",
-                "format": "binary",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/whatsapp.srs",
-                "download_detour": "🌐 Internet"
             }
         ],
         "final": "🌐 Internet",
