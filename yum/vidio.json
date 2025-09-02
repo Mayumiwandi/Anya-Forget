@@ -128,12 +128,9 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "siren nayumi vmess",
-        "shiroko vmess Linode",
         "ID+Linode+WS+TLS",
         "ID+Lightnode+Limited+WS+TLS+[embul]",
         "Ciputra+World+1+DBS+Tower+ID",
-        "ID+Rumahweb+Indonesia+WS+TLS+[piscara]",
         "SG+Alibaba+Cloud+Singapore+Private+Limited+TLS+[ayudesu]"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
@@ -156,54 +153,6 @@
     {
       "type": "block",
       "tag": "block"
-    },
-    {
-      "type": "vmess",
-      "tag": "siren nayumi vmess",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "siren.nayumiwandi.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/ID",
-        "headers": {
-          "Host": "siren.nayumiwandi.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "shiroko vmess Linode",
-      "tcp_fast_open": true,
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "shiroko.shirokoyumi.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/172.232.234.155-74",
-        "headers": {
-          "Host": "shiroko.shirokoyumi.workers.dev"
-        }
-      }
     },
     {
       "type": "vless",
@@ -318,29 +267,6 @@
         "path": "/149.129.250.8-443",
         "headers": {
           "Host": "zero.xeroga5932.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID+Rumahweb+Indonesia+WS+TLS+[piscara]",
-      "server": "support.vidio.com",
-      "server_port": 443,
-      "password": "3b138188-de73-488b-be59-d363b9c4c647",
-      "tls": {
-        "enabled": true,
-        "server_name": "piscara.fevex52293.workers.dev",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/203.194.112.119-8443",
-        "headers": {
-          "Host": "piscara.fevex52293.workers.dev"
         }
       }
     },
