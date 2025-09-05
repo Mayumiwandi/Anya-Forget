@@ -131,7 +131,8 @@
         "ID+Linode+WS+TLS",
         "ID+Lightnode+Limited+WS+TLS+[embul]",
         "Ciputra+World+1+DBS+Tower+ID",
-        "SG+Alibaba+Cloud+Singapore+Private+Limited+TLS+[ayudesu]"
+        "SG+Alibaba+Cloud+Singapore+Private+Limited+TLS+[ayudesu]",
+        "Amazon.com+WS+TLS+[nautica-prod]"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -290,6 +291,29 @@
         "path": "/8.222.159.134-12483",
         "headers": {
           "Host": "ayudesu.piscaraneptara.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "Amazon.com+WS+TLS+[nautica-prod]",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "password": "c1539ec7-9be9-4ae1-8026-66ae194830b6",
+      "tls": {
+        "enabled": true,
+        "server_name": "nautica.krikkrik.tech",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.218.77.16-1443",
+        "headers": {
+          "Host": "nautica.krikkrik.tech"
         }
       }
     }
