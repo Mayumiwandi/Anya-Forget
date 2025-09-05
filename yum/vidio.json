@@ -132,7 +132,8 @@
         "ID+Lightnode+Limited+WS+TLS+[embul]",
         "Ciputra+World+1+DBS+Tower+ID",
         "SG+Alibaba+Cloud+Singapore+Private+Limited+TLS+[ayudesu]",
-        "Amazon.com+WS+TLS+[nautica-prod]"
+        "Amazon.com+WS+TLS+[nautica-prod]",
+        "Lightnode+Limited+ID+Bless"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -314,6 +315,30 @@
         "path": "/43.218.77.16-1443",
         "headers": {
           "Host": "nautica.krikkrik.tech"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "Lightnode+Limited+ID+Bless",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "uuid": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "worker.my.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/free/156.244.1.250:8443",
+        "headers": {
+          "Host": "worker.my.id"
         }
       }
     }
