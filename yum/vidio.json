@@ -129,7 +129,6 @@
       "tag": "🚀 Latency",
       "outbounds": [
         "ID+Linode+WS+TLS",
-        "ID+Lightnode+Limited+WS+TLS+[embul]",
         "Ciputra+World+1+DBS+Tower+ID",
         "SG+Alibaba+Cloud+Singapore+Private+Limited+TLS+[ayudesu]",
         "Amazon.com+WS+TLS+[nautica-prod]",
@@ -220,30 +219,6 @@
       "transport": {
         "type": "ws",
         "path": "/172.232.234.117-443",
-        "headers": {
-          "Host": "zero.xeroga5932.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "ID+Lightnode+Limited+WS+TLS+[embul]",
-      "server": "support.vidio.com",
-      "server_port": 443,
-      "uuid": "25a959c6-fe9f-4b2e-a7e7-df3aa458af26",
-      "flow": "",
-      "tls": {
-        "enabled": true,
-        "server_name": "zero.xeroga5932.workers.dev",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/156.244.1.250-8443",
         "headers": {
           "Host": "zero.xeroga5932.workers.dev"
         }
