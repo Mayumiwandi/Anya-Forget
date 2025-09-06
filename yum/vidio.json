@@ -283,7 +283,7 @@
             "server": "support.vidio.com",
             "server_port": 443,
             "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
-            "alter_id": "0",
+            "alter_id": 0,
             "security": "zero",
             "tls": {
                 "enabled": true,
