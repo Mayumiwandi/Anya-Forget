@@ -129,7 +129,8 @@
       "tag": "🚀 Latency",
       "outbounds": [
         "Amazon.com+WS+TLS+[nautica-prod]",
-        "Lightnode+Limited+ID+Bless"
+        "Lightnode+Limited+ID+Bless",
+        "ID Coba Vless"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -242,6 +243,30 @@
         "path": "/free/156.244.1.250:8443",
         "headers": {
           "Host": "worker.my.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "ID Coba Vless",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "uuid": "eff06b8e-5c92-4627-b66f-2b94acca406a",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "nautica-pred.vokip29018.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/149.129.250.8-443",
+        "headers": {
+          "Host": "nautica-pred.vokip29018.workers.dev"
         }
       }
     }
