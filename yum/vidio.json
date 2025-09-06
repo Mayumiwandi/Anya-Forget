@@ -130,7 +130,8 @@
       "outbounds": [
         "Amazon.com+WS+TLS+[nautica-prod]",
         "Lightnode+Limited+ID+Bless",
-        "ID Coba Vless"
+        "ID Coba Vless",
+        "vmess Besok ID"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -267,6 +268,30 @@
         "path": "/149.129.250.8-443",
         "headers": {
           "Host": "nautica-pred.vokip29018.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "vmess Besok ID",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
+      "alter_id": "0",
+      "security": "zero",
+      "tls": {
+        "enabled": true,
+        "server_name": "beatrice.shirokoyumi.workers.dev",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.218.77.16-1443",
+        "headers": {
+          "Host": "beatrice.shirokoyumi.workers.dev"
         }
       }
     }
