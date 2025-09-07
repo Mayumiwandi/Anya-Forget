@@ -297,7 +297,7 @@
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "8d15ed25-c871-4b49-b990-9275d9f23b44",
-      "alter_id": "0",
+      "alter_id": 0,
       "security": "zero",
       "tls": {
         "enabled": true,
