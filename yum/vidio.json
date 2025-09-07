@@ -143,7 +143,11 @@
     {
       "type": "selector",
       "tag": "📍 Region",
-      "outbounds": []
+      "outbounds": [
+        "ID",
+        "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
+        "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]"
+      ]
     },
     {
       "type": "direct",
@@ -310,6 +314,76 @@
         "path": "/203.194.112.119-8443",
         "headers": {
           "Host": "nontontv.vidio.com.nautica.zerostore.tech"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "ID",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "9ea77836-599a-4632-9138-917e5ab0c048",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/203.194.112.119-2053",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/8.219.126.137-491",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/13.250.131.37-443",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
         }
       }
     }
