@@ -8,31 +8,28 @@
     "dns": {
         "servers": [
             {
+                "type": "tls",
                 "tag": "google-dns",
-                "address": "tls://dns.google",
-                "address_resolver": "dns-local",
-                "address_strategy": "prefer_ipv4",
-                "strategy": "ipv4_only",
-                "detour": "🚀 Latency"
+                "detour": "🚀 Latency",
+                "domain_resolver": {
+                    "server": "dns-local",
+                    "strategy": "prefer_ipv4"
+                },
+                "server": "dns.google"
             },
             {
+                "type": "tls",
                 "tag": "cloudflare-dns",
-                "address": "tls://1.1.1.1",
-                "address_resolver": "dns-local",
-                "address_strategy": "prefer_ipv4",
-                "strategy": "ipv4_only",
-                "detour": "📍 Region"
+                "detour": "📍 Region",
+                "domain_resolver": {
+                    "server": "dns-local",
+                    "strategy": "prefer_ipv4"
+                },
+                "server": "1.1.1.1"
             },
             {
-                "tag": "dns-local",
-                "address": "local",
-                "address_strategy": "prefer_ipv4",
-                "strategy": "ipv4_only"
-            },
-            {
-                "tag": "block-dns",
-                "address": "rcode://success",
-                "detour": "block"
+                "type": "local",
+                "tag": "dns-local"
             },
             {
                 "type": "fakeip",
@@ -54,7 +51,9 @@
                     "quiz.int.vidio.com",
                     "quiz.vidio.com",
                     "v8.kuramanime.run",
-                    "kuramanime.run"
+                    "kuramanime.run",
+                    "api24-normal-alisg.tiktokv.com",
+                    "grabacademyportal.grab.com"
                 ],
                 "server": "dns-local",
                 "action": "route"
@@ -69,14 +68,6 @@
                 ],
                 "server": "google-dns",
                 "action": "route"
-            },
-            {
-                "outbound": "🚀 Latency",
-                "server": "google-dns"
-            },
-            {
-                "outbound": "📍 Region",
-                "server": "google-dns"
             },
             {
                 "query_type": [
@@ -157,10 +148,6 @@
         {
             "type": "direct",
             "tag": "Local N"
-        },
-        {
-            "type": "block",
-            "tag": "block"
         },
         {
             "type": "vless",
@@ -368,6 +355,11 @@
             }
         ],
         "final": "🌐 Internet",
+        "default_domain_resolver": {
+            "server": "dns-local",
+            "rewrite_ttl": 60,
+            "client_subnet": "1.1.1.1"
+        },
         "auto_detect_interface": true
     },
     "experimental": {
