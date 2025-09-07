@@ -143,60 +143,11 @@
     {
       "type": "selector",
       "tag": "📍 Region",
-      "outbounds": [
-        "(MY) PQ HOSTING PLUS",
-        "SG 6 COLLYER QUAY TLS [delulu]"
-      ]
+      "outbounds": []
     },
     {
       "type": "direct",
       "tag": "Local N"
-    },
-    {
-      "type": "vless",
-      "tag": "(MY) PQ HOSTING PLUS",
-      "server": "investor.fb.com",
-      "server_port": 443,
-      "uuid": "30e7d5fc-7d5e-4472-9053-c016bc107c6b",
-      "tls": {
-        "enabled": true,
-        "server_name": "investor.fb.com.violetvpn.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/my-pqhost",
-        "headers": {
-          "Host": "investor.fb.com.violetvpn.biz.id"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "SG 6 COLLYER QUAY TLS [delulu]",
-      "server": "plus-store.naver.com",
-      "server_port": 443,
-      "uuid": "885ee2c9-9df6-4c4b-8625-df30df115fb3",
-      "tls": {
-        "enabled": true,
-        "server_name": "celeliaamelia.biz.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/43.128.95.110-40029",
-        "headers": {
-          "Host": "celeliaamelia.biz.id"
-        }
-      }
     },
     {
       "type": "trojan",
