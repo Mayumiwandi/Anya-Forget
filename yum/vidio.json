@@ -453,9 +453,6 @@
         "action": "route"
       },
       {
-        "inbound": [
-          "direct-in"
-        ],
         "type": "logical",
         "mode": "and",
         "rules": [
