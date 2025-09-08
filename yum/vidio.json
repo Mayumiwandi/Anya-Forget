@@ -153,7 +153,8 @@
       "tag": "⚙️ UDP",
       "outbounds": [
         "internet-cepat-buat-tapa",
-        "UDP Sama"
+        "UDP Sama",
+        "(ID-JKT) InterCloud"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -420,6 +421,30 @@
         "path": "/vmess",
         "headers": {
           "Host": "sg2.liteon.biz.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "(ID-JKT) InterCloud",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "63390020-c25e-407b-839d-9d34099db201",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "gyatt.hiniature.xyz",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "%2Fzelp%2Fvless",
+        "headers": {
+          "Host": "gyatt.hiniature.xyz"
         }
       }
     }
