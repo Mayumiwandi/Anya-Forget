@@ -152,7 +152,8 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "internet-cepat-buat-tapa"
+        "internet-cepat-buat-tapa",
+        "UDP Sama"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -377,6 +378,30 @@
     {
       "type": "vmess",
       "tag": "internet-cepat-buat-tapa",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "b20cc1e6-9a78-4d37-bc5c-29b70913bb03",
+      "alter_id": 0,
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "sg2.liteon.biz.id",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "sg2.liteon.biz.id"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "UDP Sama",
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "b20cc1e6-9a78-4d37-bc5c-29b70913bb03",
