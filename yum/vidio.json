@@ -152,7 +152,8 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "30-H-Prem-22Sep-habis"
+        "30-H-Prem-22Sep-habis",
+        "pakaisaja WS (CDN) TLS"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -395,6 +396,30 @@
         "path": "?mode=proxy&proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "pakaisaja WS (CDN) TLS",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "b115c163-dcc4-4570-b68b-1e74eb6b16f9",
+      "alter_id": 0,
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "sgdo.breaker.qzz.io",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "sgdo.breaker.qzz.io"
         }
       }
     }
