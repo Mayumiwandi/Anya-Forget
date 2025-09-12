@@ -131,7 +131,8 @@
         "vmess Besok ID",
         "Amazon Data Services Singapore",
         "ID Alibaba Cloud WS TLS WC",
-        "ID Rumahweb Indonesia WC"
+        "ID Rumahweb Indonesia WC",
+        "Experiment-21"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -370,6 +371,30 @@
         "path": "/trojan-ws",
         "headers": {
           "Host": "kdi.cloudhrstech.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "Experiment-21",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "12592a6d-6c02-41db-8d95-176a908fe8e0",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "penaple.cfpaid03.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "?mode=proxy&proxyip=149.129.250.8:443",
+        "headers": {
+          "Host": "penaple.cfpaid03.workers.dev"
         }
       }
     }
