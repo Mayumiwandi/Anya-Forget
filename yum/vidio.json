@@ -127,7 +127,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "Lightnode+Limited+ID+Bless",
         "ID Coba Vless",
         "vmess Besok ID",
         "Amazon Data Services Singapore",
@@ -162,29 +161,6 @@
     {
       "type": "direct",
       "tag": "Local N"
-    },
-    {
-      "type": "vless",
-      "tag": "Lightnode+Limited+ID+Bless",
-      "server": "support.vidio.com",
-      "server_port": 443,
-      "uuid": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
-      "tls": {
-        "enabled": true,
-        "server_name": "worker.my.id",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/free/156.244.1.250:8443",
-        "headers": {
-          "Host": "worker.my.id"
-        }
-      }
     },
     {
       "type": "vless",
