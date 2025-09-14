@@ -1,577 +1,602 @@
 {
-    "log": {
-        "disabled": true,
-        "level": "debug",
-        "output": "Nekobox.log",
-        "timestamp": true
-    },
-    "dns": {
-        "servers": [
-            {
-                "type": "tls",
-                "tag": "google-dns",
-                "detour": "🚀 Latency",
-                "domain_resolver": {
-                    "server": "dns-local",
-                    "strategy": "prefer_ipv4"
-                },
-                "server": "dns.google"
-            },
-            {
-                "type": "tls",
-                "tag": "cloudflare-dns",
-                "detour": "📍 Region",
-                "domain_resolver": {
-                    "server": "dns-local",
-                    "strategy": "prefer_ipv4"
-                },
-                "server": "1.1.1.1"
-            },
-            {
-                "type": "local",
-                "tag": "dns-local"
-            },
-            {
-                "type": "fakeip",
-                "tag": "fakeip",
-                "inet4_range": "198.18.0.0/15",
-                "inet6_range": "fc00::/18"
-            }
-        ],
-        "rules": [
-            {
-                "domain": [
-                    "plus-store.naver.com",
-                    "ava.game.naver.com",
-                    "investor.fb.com",
-                    "investors.spotify.com",
-                    "nontontv.vidio.com",
-                    "support.vidio.com",
-                    "img.email2.vidio.com",
-                    "quiz.int.vidio.com",
-                    "quiz.vidio.com",
-                    "v8.kuramanime.run",
-                    "kuramanime.run",
-                    "api24-normal-alisg.tiktokv.com",
-                    "grabacademyportal.grab.com"
-                ],
-                "server": "dns-local",
-                "action": "route"
-            },
-            {
-                "domain": [
-                    "13.round.web.id",
-                    "siren.nayumiwandi.workers.dev",
-                    "shiroko.shirokoyumi.workers.dev",
-                    "layla.mayumiyui.my.id",
-                    "yumicftigarun.web.id",
-                    "diona.sokove5110.workers.dev"
-                ],
-                "server": "google-dns",
-                "action": "route"
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "server": "fakeip"
-            }
-        ],
-        "strategy": "ipv4_only",
-        "independent_cache": false
-    },
-    "inbounds": [
-        {
-            "type": "direct",
-            "tag": "direct-in",
-            "override_address": "112.215.203.246",
-            "override_port": 53,
-            "detour": "Local N"
+  "log": {
+    "disabled": true,
+    "level": "debug",
+    "output": "Nekobox.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "tls",
+        "tag": "google-dns",
+        "detour": "🚀 Latency",
+        "domain_resolver": {
+          "server": "dns-local",
+          "strategy": "prefer_ipv4"
         },
-        {
-            "type": "mixed",
-            "tag": "mixed-in",
-            "listen": "0.0.0.0",
-            "listen_port": 9001,
-            "tcp_fast_open": true,
-            "sniff": true,
-            "sniff_override_destination": true
+        "server": "dns.google"
+      },
+      {
+        "type": "tls",
+        "tag": "cloudflare-dns",
+        "detour": "📍 Region",
+        "domain_resolver": {
+          "server": "dns-local",
+          "strategy": "prefer_ipv4"
         },
-        {
-            "type": "tun",
-            "tag": "tun-in",
-            "interface_name": "tunelm0n",
-            "mtu": 1590,
-            "address": [
-                "172.18.0.1/30",
-                "fdfe:dcba:9876::1/126"
-            ],
-            "auto_route": true,
-            "strict_route": false,
-            "stack": "system",
-            "sniff": true,
-            "endpoint_independent_nat": true
-        }
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "local",
+        "tag": "dns-local"
+      },
+      {
+        "type": "fakeip",
+        "tag": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
     ],
-    "outbounds": [
-        {
-            "type": "selector",
-            "tag": "🌐 Internet",
-            "outbounds": [
-                "🚀 Latency",
-                "📍 Region"
-            ],
-            "default": "🚀 Latency"
-        },
-        {
-            "type": "urltest",
-            "tag": "🚀 Latency",
-            "outbounds": [
-                "ID Coba Vless",
-                "vmess Besok ID",
-                "Amazon Data Services Singapore",
-                "ID Alibaba Cloud WS TLS WC",
-                "ID Rumahweb Indonesia WC",
-                "Experiment-21"
-            ],
-            "url": "https://connectivitycheck.gstatic.com/generate_204",
-            "interval": "3m0s",
-            "tolerance": 60,
-            "idle_timeout": "5m0s"
-        },
-        {
-            "type": "selector",
-            "tag": "📍 Region",
-            "outbounds": [
-                "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
-                "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
-                "ID Rumahweb Indonesia WS TLS [diona]"
-            ]
-        },
-        {
-            "type": "urltest",
-            "tag": "⚙️ UDP",
-            "outbounds": [
-                "30-H-Prem-22Sep-habis",
-                "pakaisaja WS (CDN) TLS"
-            ],
-            "url": "https://connectivitycheck.gstatic.com/generate_204",
-            "interval": "3m0s",
-            "tolerance": 60,
-            "idle_timeout": "5m0s"
-        },
-        {
-            "type": "direct",
-            "tag": "Local N"
-        },
-        {
-            "type": "vless",
-            "tag": "ID Coba Vless",
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "eff06b8e-5c92-4627-b66f-2b94acca406a",
-            "tls": {
-                "enabled": true,
-                "server_name": "nautica-pred.vokip29018.workers.dev",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/149.129.250.8-443",
-                "headers": {
-                    "Host": "nautica-pred.vokip29018.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "vmess Besok ID",
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
-            "alter_id": 0,
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "beatrice.shirokoyumi.workers.dev",
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "beatrice.shirokoyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "Amazon Data Services Singapore",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "8d15ed25-c871-4b49-b990-9275d9f23b44",
-            "alter_id": 0,
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "verstia.sokove5110.workers.dev",
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/13.250.131.37-443",
-                "headers": {
-                    "Host": "verstia.sokove5110.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID Alibaba Cloud WS TLS WC",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
-            "tls": {
-                "enabled": true,
-                "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/149.129.250.8-443",
-                "headers": {
-                    "Host": "nontontv.vidio.com.nautica.zerostore.tech"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "ID Rumahweb Indonesia WC",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
-            "flow": "",
-            "tls": {
-                "enabled": true,
-                "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-8443",
-                "headers": {
-                    "Host": "nontontv.vidio.com.nautica.zerostore.tech"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
-            "flow": "",
-            "tls": {
-                "enabled": true,
-                "server_name": "diona.sokove5110.workers.dev",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/8.219.126.137-491",
-                "headers": {
-                    "Host": "diona.sokove5110.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
-            "tls": {
-                "enabled": true,
-                "server_name": "diona.sokove5110.workers.dev",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/13.250.131.37-443",
-                "headers": {
-                    "Host": "diona.sokove5110.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID Rumahweb Indonesia WS TLS [diona]",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "9ea77836-599a-4632-9138-917e5ab0c048",
-            "tls": {
-                "enabled": true,
-                "server_name": "diona.sokove5110.workers.dev",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-2053",
-                "headers": {
-                    "Host": "diona.sokove5110.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "30-H-Prem-22Sep-habis",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "cff9ce37-3ec4-4f8a-9954-d2e3f2c1dc7a",
-            "tls": {
-                "enabled": true,
-                "server_name": "kdi.cloudhrstech.com",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/trojan-ws",
-                "headers": {
-                    "Host": "kdi.cloudhrstech.com"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "Experiment-21",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "12592a6d-6c02-41db-8d95-176a908fe8e0",
-            "flow": "",
-            "tls": {
-                "enabled": true,
-                "server_name": "penaple.cfpaid03.workers.dev",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "?mode=proxy&proxyip=149.129.250.8:443",
-                "headers": {
-                    "Host": "penaple.cfpaid03.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "pakaisaja WS (CDN) TLS",
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "b115c163-dcc4-4570-b68b-1e74eb6b16f9",
-            "alter_id": 0,
-            "security": "auto",
-            "tls": {
-                "enabled": true,
-                "server_name": "sgdo.breaker.qzz.io",
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/vmess",
-                "headers": {
-                    "Host": "sgdo.breaker.qzz.io"
-                }
-            }
-        }
-    ],
-    "route": {
-        "rules": [
-            {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "domain_suffix": [
-                            "wa.me",
-                            "whatsapp-plus.info",
-                            "whatsapp-plus.me",
-                            "whatsapp-plus.net",
-                            "whatsapp.cc",
-                            "whatsapp.biz",
-                            "whatsapp.com",
-                            "whatsapp.info",
-                            "whatsapp.net",
-                            "whatsapp.org",
-                            "whatsapp.tv",
-                            "whatsappbrand.com",
-                            "graph.whatsapp.com",
-                            "graph.whatsapp.net"
-                        ],
-                        "domain": [
-                            "graph.facebook.com"
-                        ],
-                        "domain_keyword": [
-                            "whatsapp"
-                        ],
-                        "package_name": [
-                            "com.whatsapp",
-                            "com.whatsapp.w4b"
-                        ],
-                        "ip_cidr": [
-                            "158.85.224.160/27",
-                            "158.85.46.128/27",
-                            "158.85.5.192/27",
-                            "173.192.222.160/27",
-                            "173.192.231.32/27",
-                            "18.194.0.0/15",
-                            "184.173.128.0/17",
-                            "208.43.122.128/27",
-                            "34.224.0.0/12",
-                            "50.22.198.204/30",
-                            "54.242.0.0/15"
-                        ]
-                    },
-                    {
-                        "network": "tcp"
-                    }
-                ],
-                "outbound": "🌐 Internet",
-                "action": "route"
-            },
-            {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "domain_suffix": [
-                            "wa.me",
-                            "whatsapp-plus.info",
-                            "whatsapp-plus.me",
-                            "whatsapp-plus.net",
-                            "whatsapp.cc",
-                            "whatsapp.biz",
-                            "whatsapp.com",
-                            "whatsapp.info",
-                            "whatsapp.net",
-                            "whatsapp.org",
-                            "whatsapp.tv",
-                            "whatsappbrand.com",
-                            "graph.whatsapp.com",
-                            "graph.whatsapp.net"
-                        ],
-                        "domain": [
-                            "graph.facebook.com"
-                        ],
-                        "domain_keyword": [
-                            "whatsapp"
-                        ],
-                        "package_name": [
-                            "com.whatsapp",
-                            "com.whatsapp.w4b"
-                        ],
-                        "ip_cidr": [
-                            "158.85.224.160/27",
-                            "158.85.46.128/27",
-                            "158.85.5.192/27",
-                            "173.192.222.160/27",
-                            "173.192.231.32/27",
-                            "18.194.0.0/15",
-                            "184.173.128.0/17",
-                            "208.43.122.128/27",
-                            "34.224.0.0/12",
-                            "50.22.198.204/30",
-                            "54.242.0.0/15"
-                        ]
-                    },
-                    {
-                        "network": "udp"
-                    }
-                ],
-                "outbound": "⚙️ UDP",
-                "action": "route"
-            },
-            {
-                "domain_suffix": [
-                    "hoyoverse.com",
-                    "download-sea.hoyoverse.com",
-                    "fastcdn.hoyoverse.com",
-                    "growtopiagame.com",
-                    "cdn.growtopiagame.com"
-                ],
-                "outbound": "🌐 Internet",
-                "action": "route"
-            },
-            {
-                "type": "logical",
-                "mode": "or",
-                "rules": [
-                    {
-                        "protocol": "dns"
-                    },
-                    {
-                        "port": 53
-                    }
-                ],
-                "action": "hijack-dns"
-            }
+    "rules": [
+      {
+        "domain": [
+          "plus-store.naver.com",
+          "ava.game.naver.com",
+          "investor.fb.com",
+          "investors.spotify.com",
+          "nontontv.vidio.com",
+          "support.vidio.com",
+          "img.email2.vidio.com",
+          "quiz.int.vidio.com",
+          "quiz.vidio.com",
+          "v8.kuramanime.run",
+          "kuramanime.run",
+          "api24-normal-alisg.tiktokv.com",
+          "grabacademyportal.grab.com"
         ],
-        "final": "🌐 Internet",
-        "default_domain_resolver": {
-            "server": "dns-local",
-            "rewrite_ttl": 60,
-            "client_subnet": "1.1.1.1"
-        },
-        "auto_detect_interface": true
+        "server": "dns-local",
+        "action": "route"
+      },
+      {
+        "domain": [
+          "13.round.web.id",
+          "siren.nayumiwandi.workers.dev",
+          "shiroko.shirokoyumi.workers.dev",
+          "layla.mayumiyui.my.id",
+          "yumicftigarun.web.id",
+          "diona.sokove5110.workers.dev"
+        ],
+        "server": "google-dns",
+        "action": "route"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
+      }
+    ],
+    "strategy": "ipv4_only",
+    "independent_cache": false
+  },
+  "inbounds": [
+    {
+      "type": "direct",
+      "tag": "direct-in",
+      "override_address": "112.215.203.246",
+      "override_port": 53,
+      "detour": "Local N"
     },
-    "experimental": {
-        "clash_api": {
-            "external_controller": "0.0.0.0:9090",
-            "external_ui": "dist",
-            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
-            "external_ui_download_detour": "🌐 Internet",
-            "default_mode": "rule",
-            "access_control_allow_origin": "*"
-        }
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 9001,
+      "tcp_fast_open": true,
+      "sniff": true,
+      "sniff_override_destination": true
+    },
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "tunelm0n",
+      "mtu": 1590,
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": false,
+      "stack": "system",
+      "sniff": true,
+      "endpoint_independent_nat": true
     }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "🌐 Internet",
+      "outbounds": [
+        "🚀 Latency",
+        "📍 Region"
+      ],
+      "default": "🚀 Latency"
+    },
+    {
+      "type": "urltest",
+      "tag": "🚀 Latency",
+      "outbounds": [
+        "ID Coba Vless",
+        "vmess Besok ID",
+        "Amazon Data Services Singapore",
+        "ID Alibaba Cloud WS TLS WC",
+        "ID Rumahweb Indonesia WC",
+        "Experiment-21"
+      ],
+      "url": "https://connectivitycheck.gstatic.com/generate_204",
+      "interval": "3m0s",
+      "tolerance": 60,
+      "idle_timeout": "5m0s"
+    },
+    {
+      "type": "selector",
+      "tag": "📍 Region",
+      "outbounds": [
+        "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
+        "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
+        "ID Rumahweb Indonesia WS TLS [diona]"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "⚙️ UDP",
+      "outbounds": [
+        "30-H-Prem-22Sep-habis",
+        "pakaisaja WS (CDN) TLS",
+        "malming WS (CDN) TLS"
+      ],
+      "url": "https://connectivitycheck.gstatic.com/generate_204",
+      "interval": "3m0s",
+      "tolerance": 60,
+      "idle_timeout": "5m0s"
+    },
+    {
+      "type": "direct",
+      "tag": "Local N"
+    },
+    {
+      "type": "vless",
+      "tag": "ID Coba Vless",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "uuid": "eff06b8e-5c92-4627-b66f-2b94acca406a",
+      "tls": {
+        "enabled": true,
+        "server_name": "nautica-pred.vokip29018.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/149.129.250.8-443",
+        "headers": {
+          "Host": "nautica-pred.vokip29018.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "vmess Besok ID",
+      "server": "support.vidio.com",
+      "server_port": 443,
+      "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
+      "alter_id": 0,
+      "security": "zero",
+      "tls": {
+        "enabled": true,
+        "server_name": "beatrice.shirokoyumi.workers.dev",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.218.77.16-1443",
+        "headers": {
+          "Host": "beatrice.shirokoyumi.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "Amazon Data Services Singapore",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "8d15ed25-c871-4b49-b990-9275d9f23b44",
+      "alter_id": 0,
+      "security": "zero",
+      "tls": {
+        "enabled": true,
+        "server_name": "verstia.sokove5110.workers.dev",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/13.250.131.37-443",
+        "headers": {
+          "Host": "verstia.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "ID Alibaba Cloud WS TLS WC",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
+      "tls": {
+        "enabled": true,
+        "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/149.129.250.8-443",
+        "headers": {
+          "Host": "nontontv.vidio.com.nautica.zerostore.tech"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "ID Rumahweb Indonesia WC",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/203.194.112.119-8443",
+        "headers": {
+          "Host": "nontontv.vidio.com.nautica.zerostore.tech"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/8.219.126.137-491",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/13.250.131.37-443",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "ID Rumahweb Indonesia WS TLS [diona]",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "9ea77836-599a-4632-9138-917e5ab0c048",
+      "tls": {
+        "enabled": true,
+        "server_name": "diona.sokove5110.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/203.194.112.119-2053",
+        "headers": {
+          "Host": "diona.sokove5110.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "30-H-Prem-22Sep-habis",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "cff9ce37-3ec4-4f8a-9954-d2e3f2c1dc7a",
+      "tls": {
+        "enabled": true,
+        "server_name": "kdi.cloudhrstech.com",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trojan-ws",
+        "headers": {
+          "Host": "kdi.cloudhrstech.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "Experiment-21",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "12592a6d-6c02-41db-8d95-176a908fe8e0",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "penaple.cfpaid03.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "?mode=proxy&proxyip=149.129.250.8:443",
+        "headers": {
+          "Host": "penaple.cfpaid03.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "pakaisaja WS (CDN) TLS",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "b115c163-dcc4-4570-b68b-1e74eb6b16f9",
+      "alter_id": 0,
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "sgdo.breaker.qzz.io",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "sgdo.breaker.qzz.io"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "malming WS (CDN) TLS",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "6a75993d-da65-4c3d-a4cf-5528937720ce",
+      "alter_id": 0,
+      "security": "auto",
+      "tls": {
+        "enabled": true,
+        "server_name": "free.zidstore.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/whatever/vmess",
+        "headers": {
+          "Host": "free.zidstore.net"
+        }
+      }
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "domain_suffix": [
+              "wa.me",
+              "whatsapp-plus.info",
+              "whatsapp-plus.me",
+              "whatsapp-plus.net",
+              "whatsapp.cc",
+              "whatsapp.biz",
+              "whatsapp.com",
+              "whatsapp.info",
+              "whatsapp.net",
+              "whatsapp.org",
+              "whatsapp.tv",
+              "whatsappbrand.com",
+              "graph.whatsapp.com",
+              "graph.whatsapp.net"
+            ],
+            "domain": [
+              "graph.facebook.com"
+            ],
+            "domain_keyword": [
+              "whatsapp"
+            ],
+            "package_name": [
+              "com.whatsapp",
+              "com.whatsapp.w4b"
+            ],
+            "ip_cidr": [
+              "158.85.224.160/27",
+              "158.85.46.128/27",
+              "158.85.5.192/27",
+              "173.192.222.160/27",
+              "173.192.231.32/27",
+              "18.194.0.0/15",
+              "184.173.128.0/17",
+              "208.43.122.128/27",
+              "34.224.0.0/12",
+              "50.22.198.204/30",
+              "54.242.0.0/15"
+            ]
+          },
+          {
+            "network": "tcp"
+          }
+        ],
+        "outbound": "🌐 Internet",
+        "action": "route"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "domain_suffix": [
+              "wa.me",
+              "whatsapp-plus.info",
+              "whatsapp-plus.me",
+              "whatsapp-plus.net",
+              "whatsapp.cc",
+              "whatsapp.biz",
+              "whatsapp.com",
+              "whatsapp.info",
+              "whatsapp.net",
+              "whatsapp.org",
+              "whatsapp.tv",
+              "whatsappbrand.com",
+              "graph.whatsapp.com",
+              "graph.whatsapp.net"
+            ],
+            "domain": [
+              "graph.facebook.com"
+            ],
+            "domain_keyword": [
+              "whatsapp"
+            ],
+            "package_name": [
+              "com.whatsapp",
+              "com.whatsapp.w4b"
+            ],
+            "ip_cidr": [
+              "158.85.224.160/27",
+              "158.85.46.128/27",
+              "158.85.5.192/27",
+              "173.192.222.160/27",
+              "173.192.231.32/27",
+              "18.194.0.0/15",
+              "184.173.128.0/17",
+              "208.43.122.128/27",
+              "34.224.0.0/12",
+              "50.22.198.204/30",
+              "54.242.0.0/15"
+            ]
+          },
+          {
+            "network": "udp"
+          }
+        ],
+        "outbound": "⚙️ UDP",
+        "action": "route"
+      },
+      {
+        "domain_suffix": [
+          "hoyoverse.com",
+          "download-sea.hoyoverse.com",
+          "fastcdn.hoyoverse.com",
+          "growtopiagame.com",
+          "cdn.growtopiagame.com"
+        ],
+        "outbound": "🌐 Internet",
+        "action": "route"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "protocol": "dns"
+          },
+          {
+            "port": 53
+          }
+        ],
+        "action": "hijack-dns"
+      }
+    ],
+    "final": "🌐 Internet",
+    "default_domain_resolver": {
+      "server": "dns-local",
+      "rewrite_ttl": 60,
+      "client_subnet": "1.1.1.1"
+    },
+    "auto_detect_interface": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "dist",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
+      "external_ui_download_detour": "🌐 Internet",
+      "default_mode": "rule",
+      "access_control_allow_origin": "*"
+    }
+  }
 }
