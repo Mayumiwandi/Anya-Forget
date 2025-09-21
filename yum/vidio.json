@@ -153,7 +153,8 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "30-H-Prem-22Sep-habis"
+        "30-H-Prem-22Sep-habis",
+        "Trojan UDP Nautica"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -396,6 +397,29 @@
         "path": "?mode=proxy&proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "Trojan UDP Nautica",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "t.me%2Ffoolvpn",
+      "tls": {
+        "enabled": true,
+        "server_name": "sg1.foolvpn.me",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trojan-udp",
+        "headers": {
+          "Host": "sg1.foolvpn.me"
         }
       }
     }
