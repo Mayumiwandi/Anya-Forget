@@ -522,7 +522,7 @@
     ],
     "final": "🌐 Internet",
     "default_domain_resolver": {
-      "server": "google-dns",
+      "server": "dns-local",
       "rewrite_ttl": 60,
       "client_subnet": "1.1.1.1"
     },
