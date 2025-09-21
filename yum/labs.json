@@ -1,6 +1,6 @@
 {
   "log": {
-    "disabled": true,
+    "disabled": false,
     "level": "debug",
     "output": "Nekobox.log",
     "timestamp": true
@@ -12,7 +12,7 @@
         "tag": "google-dns",
         "detour": "🚀 Latency",
         "domain_resolver": {
-          "server": "cloudflare-dns",
+          "server": "dns-local",
           "strategy": "prefer_ipv4"
         },
         "server": "dns.google"
