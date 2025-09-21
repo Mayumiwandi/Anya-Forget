@@ -153,10 +153,7 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "30-H-Prem-22Sep-habis",
-        "pakaisaja WS (CDN) TLS",
-        "malming WS (CDN) TLS",
-        "ReactCepadd WS (CDN) TLS"
+        "30-H-Prem-22Sep-habis"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -399,78 +396,6 @@
         "path": "?mode=proxy&proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "pakaisaja WS (CDN) TLS",
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "b115c163-dcc4-4570-b68b-1e74eb6b16f9",
-      "alter_id": 0,
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "sgdo.breaker.qzz.io",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/vmess",
-        "headers": {
-          "Host": "sgdo.breaker.qzz.io"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "malming WS (CDN) TLS",
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "6a75993d-da65-4c3d-a4cf-5528937720ce",
-      "alter_id": 0,
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "free.zidstore.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/whatever/vmess",
-        "headers": {
-          "Host": "free.zidstore.net"
-        }
-      }
-    },
-    {
-      "type": "vmess",
-      "tag": "ReactCepadd WS (CDN) TLS",
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "fd51a709-c3f5-4b97-85ff-fc7a3b3dcaf2",
-      "alter_id": 0,
-      "security": "auto",
-      "tls": {
-        "enabled": true,
-        "server_name": "id1.vip-latunv.biz.id",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/vmess",
-        "headers": {
-          "Host": "id1.vip-latunv.biz.id"
         }
       }
     }
