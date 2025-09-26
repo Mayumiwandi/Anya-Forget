@@ -146,7 +146,6 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "30-H-Prem-22Sep-habis",
         "Trojan UDP Nautica",
         "SG Vless-WS(2025-10-03)"
       ],
@@ -340,29 +339,6 @@
         "path": "/203.194.112.119-2053",
         "headers": {
           "Host": "diona.sokove5110.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "30-H-Prem-22Sep-habis",
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "password": "cff9ce37-3ec4-4f8a-9954-d2e3f2c1dc7a",
-      "tls": {
-        "enabled": true,
-        "server_name": "kdi.cloudhrstech.com",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/trojan-ws",
-        "headers": {
-          "Host": "kdi.cloudhrstech.com"
         }
       }
     },
