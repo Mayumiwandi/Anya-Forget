@@ -148,7 +148,8 @@
       "outbounds": [
         "Trojan UDP Nautica",
         "SG Vless-WS(2025-10-03)",
-        "(Tokisakikurumi) [VLESS - ws] TLS ✅"
+        "(Tokisakikurumi) [VLESS - ws] TLS ✅",
+        "(Tokisakikurumi) [Trojan - ws] TLS ✅"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -433,6 +434,29 @@
       "transport": {
         "type": "ws",
         "path": "/vless",
+        "headers": {
+          "Host": "waifu.kurumi.biz.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "(Tokisakikurumi) [Trojan - ws] TLS ✅",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "Txc-iGR53gTizMTTE9ZVYQ",
+      "tls": {
+        "enabled": true,
+        "server_name": "waifu.kurumi.biz.id",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trojan",
         "headers": {
           "Host": "waifu.kurumi.biz.id"
         }
