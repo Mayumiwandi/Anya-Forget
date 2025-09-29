@@ -148,7 +148,8 @@
       "outbounds": [
         "Trojan UDP Nautica",
         "(Tokisakikurumi) [VLESS - ws] TLS ✅",
-        "(Tokisakikurumi) [Trojan - ws] TLS ✅"
+        "(Tokisakikurumi) [Trojan - ws] TLS ✅",
+        "@xlaxiataexcl"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -434,6 +435,29 @@
         "path": "/trojan",
         "headers": {
           "Host": "waifu.kurumi.biz.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "@xlaxiataexcl",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "_f-90CVlCmO_bCHFwPNt1Q",
+      "tls": {
+        "enabled": true,
+        "server_name": "id2.bvip.my.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trojanws",
+        "headers": {
+          "Host": "id2.bvip.my.id"
         }
       }
     }
