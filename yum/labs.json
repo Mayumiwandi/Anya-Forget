@@ -149,7 +149,8 @@
         "Trojan UDP Nautica",
         "(Tokisakikurumi) [VLESS - ws] TLS ✅",
         "(Tokisakikurumi) [Trojan - ws] TLS ✅",
-        "@xlaxiataexcl"
+        "@xlaxiataexcl",
+        "Mixsue-WS"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -458,6 +459,29 @@
         "path": "/trojanws",
         "headers": {
           "Host": "id2.bvip.my.id"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "Mixsue-WS",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "password": "de571cd5-8262-4d79-bf98-9cddd06b7b64",
+      "tls": {
+        "enabled": true,
+        "server_name": "id-biz.ipvps.My.id",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trojan-ws",
+        "headers": {
+          "Host": "id-biz.ipvps.My.id"
         }
       }
     }
