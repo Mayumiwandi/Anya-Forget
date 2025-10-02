@@ -128,7 +128,8 @@
         "vmess Besok ID",
         "Amazon Data Services Singapore",
         "ID Rumahweb Indonesia WC",
-        "Experiment-21"
+        "Experiment-21",
+        "PT Mitra Visioner Vless"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -434,6 +435,31 @@
         "path": "/trojan-ws",
         "headers": {
           "Host": "id-biz.ipvps.My.id"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "PT Mitra Visioner Vless",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "uuid": "c31096b3-3b52-469c-a531-103002848c98",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "nontontv.vidio.com.viora.ruriaylin.qzz.io",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "?mode=proxy&proxyip=203.194.112.119:8443",
+        "headers": {
+          "Host": "nontontv.vidio.com.viora.ruriaylin.qzz.io"
         }
       }
     }
