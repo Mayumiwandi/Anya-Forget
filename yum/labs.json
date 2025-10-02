@@ -127,7 +127,6 @@
         "ID Coba Vless",
         "vmess Besok ID",
         "Amazon Data Services Singapore",
-        "ID Alibaba Cloud WS TLS WC",
         "ID Rumahweb Indonesia WC",
         "Experiment-21"
       ],
@@ -226,29 +225,6 @@
         "path": "/13.250.131.37-443",
         "headers": {
           "Host": "verstia.sokove5110.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID Alibaba Cloud WS TLS WC",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "password": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
-      "tls": {
-        "enabled": true,
-        "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/149.129.250.8-443",
-        "headers": {
-          "Host": "nontontv.vidio.com.nautica.zerostore.tech"
         }
       }
     },
@@ -361,7 +337,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy\u0026proxyip=149.129.250.8:443",
+        "path": "?mode=proxy&proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
         }
