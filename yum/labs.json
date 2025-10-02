@@ -8,24 +8,40 @@
   "dns": {
     "servers": [
       {
-        "type": "tls",
+        "type": "https",
         "tag": "google-dns",
         "detour": "🚀 Latency",
         "domain_resolver": {
-          "server": "dns-local",
+          "server": "google-udp",
           "strategy": "prefer_ipv4"
         },
         "server": "dns.google"
       },
       {
-        "type": "tls",
+        "type": "udp",
+        "tag": "google-udp",
+        "server": "8.8.8.8"
+      },
+      {
+        "type": "https",
         "tag": "cloudflare-dns",
-        "detour": "📍 Region",
+        "detour": "🌐 Internet",
         "domain_resolver": {
-          "server": "dns-local",
+          "server": "cloudflare-udp",
           "strategy": "prefer_ipv4"
         },
+        "server": "cloudflare-dns.com"
+      },
+      {
+        "type": "udp",
+        "tag": "cloudflare-udp",
         "server": "1.1.1.1"
+      },
+      {
+        "type": "udp",
+        "tag": "dns-direct",
+        "server": "112.215.203.246",
+        "server_port": 53
       },
       {
         "type": "local",
@@ -33,7 +49,7 @@
       },
       {
         "type": "fakeip",
-        "tag": "fakeip",
+        "tag": "remote",
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
       }
@@ -55,8 +71,7 @@
           "api24-normal-alisg.tiktokv.com",
           "grabacademyportal.grab.com"
         ],
-        "server": "dns-local",
-        "action": "route"
+        "server": "dns-local"
       },
       {
         "domain": [
@@ -67,19 +82,18 @@
           "yumicftigarun.web.id",
           "diona.sokove5110.workers.dev"
         ],
-        "server": "google-dns",
-        "action": "route"
+        "server": "google-dns"
       },
       {
         "query_type": [
           "A",
           "AAAA"
         ],
-        "server": "fakeip"
+        "server": "remote"
       }
     ],
-    "strategy": "ipv4_only",
-    "independent_cache": false
+    "final": "cloudflare-dns",
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
@@ -101,7 +115,6 @@
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
-      "strict_route": false,
       "stack": "system",
       "sniff": true,
       "endpoint_independent_nat": true
@@ -113,7 +126,8 @@
       "tag": "🌐 Internet",
       "outbounds": [
         "🚀 Latency",
-        "📍 Region"
+        "📍 Region",
+        "⚙️ UDP"
       ],
       "default": "🚀 Latency"
     },
@@ -146,7 +160,6 @@
       "type": "urltest",
       "tag": "⚙️ UDP",
       "outbounds": [
-        "Trojan UDP Nautica",
         "(Tokisakikurumi) [VLESS - ws] TLS ✅",
         "(Tokisakikurumi) [Trojan - ws] TLS ✅",
         "@xlaxiataexcl",
@@ -166,7 +179,6 @@
       "tls": {
         "enabled": true,
         "server_name": "nautica-pred.vokip29018.workers.dev",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -183,10 +195,10 @@
     {
       "type": "vmess",
       "tag": "vmess Besok ID",
+      "tcp_fast_open": true,
       "server": "support.vidio.com",
       "server_port": 443,
       "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
-      "alter_id": 0,
       "security": "zero",
       "tls": {
         "enabled": true,
@@ -207,10 +219,10 @@
     {
       "type": "vmess",
       "tag": "Amazon Data Services Singapore",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "8d15ed25-c871-4b49-b990-9275d9f23b44",
-      "alter_id": 0,
       "security": "zero",
       "tls": {
         "enabled": true,
@@ -231,13 +243,13 @@
     {
       "type": "trojan",
       "tag": "ID Alibaba Cloud WS TLS WC",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
       "tls": {
         "enabled": true,
         "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -254,14 +266,13 @@
     {
       "type": "vless",
       "tag": "ID Rumahweb Indonesia WC",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "648e8564-d8eb-43f9-bab9-d12ec250e84c",
-      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "nontontv.vidio.com.nautica.zerostore.tech",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -278,14 +289,13 @@
     {
       "type": "vless",
       "tag": "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
-      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "diona.sokove5110.workers.dev",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -302,13 +312,13 @@
     {
       "type": "trojan",
       "tag": "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
       "tls": {
         "enabled": true,
         "server_name": "diona.sokove5110.workers.dev",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -325,13 +335,13 @@
     {
       "type": "trojan",
       "tag": "ID Rumahweb Indonesia WS TLS [diona]",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "9ea77836-599a-4632-9138-917e5ab0c048",
       "tls": {
         "enabled": true,
         "server_name": "diona.sokove5110.workers.dev",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -348,14 +358,13 @@
     {
       "type": "vless",
       "tag": "Experiment-21",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "12592a6d-6c02-41db-8d95-176a908fe8e0",
-      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "penaple.cfpaid03.workers.dev",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -363,42 +372,19 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy&proxyip=149.129.250.8:443",
+        "path": "?mode=proxy\u0026proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
         }
       }
     },
     {
-      "type": "trojan",
-      "tag": "Trojan UDP Nautica",
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "password": "t.me%2Ffoolvpn",
-      "tls": {
-        "enabled": true,
-        "server_name": "sg1.foolvpn.me",
-        "insecure": false,
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/trojan-udp",
-        "headers": {
-          "Host": "sg1.foolvpn.me"
-        }
-      }
-    },
-    {
       "type": "vless",
       "tag": "(Tokisakikurumi) [VLESS - ws] TLS ✅",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "uuid": "a2088892-07c5-4c54-8a10-4a4b6ebefab6",
-      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "waifu.kurumi.biz.id",
@@ -419,6 +405,7 @@
     {
       "type": "trojan",
       "tag": "(Tokisakikurumi) [Trojan - ws] TLS ✅",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "Txc-iGR53gTizMTTE9ZVYQ",
@@ -442,13 +429,13 @@
     {
       "type": "trojan",
       "tag": "@xlaxiataexcl",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "_f-90CVlCmO_bCHFwPNt1Q",
       "tls": {
         "enabled": true,
         "server_name": "id2.bvip.my.id",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -465,13 +452,13 @@
     {
       "type": "trojan",
       "tag": "Mixsue-WS",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
       "password": "de571cd5-8262-4d79-bf98-9cddd06b7b64",
       "tls": {
         "enabled": true,
         "server_name": "id-biz.ipvps.My.id",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -489,10 +476,14 @@
   "route": {
     "rules": [
       {
+        "action": "sniff"
+      },
+      {
         "type": "logical",
         "mode": "and",
         "rules": [
           {
+            "domain": "graph.facebook.com",
             "domain_suffix": [
               "wa.me",
               "whatsapp-plus.info",
@@ -509,16 +500,7 @@
               "graph.whatsapp.com",
               "graph.whatsapp.net"
             ],
-            "domain": [
-              "graph.facebook.com"
-            ],
-            "domain_keyword": [
-              "whatsapp"
-            ],
-            "package_name": [
-              "com.whatsapp",
-              "com.whatsapp.w4b"
-            ],
+            "domain_keyword": "whatsapp",
             "ip_cidr": [
               "158.85.224.160/27",
               "158.85.46.128/27",
@@ -531,20 +513,24 @@
               "34.224.0.0/12",
               "50.22.198.204/30",
               "54.242.0.0/15"
+            ],
+            "package_name": [
+              "com.whatsapp",
+              "com.whatsapp.w4b"
             ]
           },
           {
             "network": "tcp"
           }
         ],
-        "outbound": "🌐 Internet",
-        "action": "route"
+        "outbound": "🌐 Internet"
       },
       {
         "type": "logical",
         "mode": "and",
         "rules": [
           {
+            "domain": "graph.facebook.com",
             "domain_suffix": [
               "wa.me",
               "whatsapp-plus.info",
@@ -561,16 +547,7 @@
               "graph.whatsapp.com",
               "graph.whatsapp.net"
             ],
-            "domain": [
-              "graph.facebook.com"
-            ],
-            "domain_keyword": [
-              "whatsapp"
-            ],
-            "package_name": [
-              "com.whatsapp",
-              "com.whatsapp.w4b"
-            ],
+            "domain_keyword": "whatsapp",
             "ip_cidr": [
               "158.85.224.160/27",
               "158.85.46.128/27",
@@ -583,25 +560,17 @@
               "34.224.0.0/12",
               "50.22.198.204/30",
               "54.242.0.0/15"
+            ],
+            "package_name": [
+              "com.whatsapp",
+              "com.whatsapp.w4b"
             ]
           },
           {
             "network": "udp"
           }
         ],
-        "outbound": "⚙️ UDP",
-        "action": "route"
-      },
-      {
-        "domain_suffix": [
-          "hoyoverse.com",
-          "download-sea.hoyoverse.com",
-          "fastcdn.hoyoverse.com",
-          "growtopiagame.com",
-          "cdn.growtopiagame.com"
-        ],
-        "outbound": "🌐 Internet",
-        "action": "route"
+        "outbound": "⚙️ UDP"
       },
       {
         "type": "logical",
@@ -618,12 +587,11 @@
       }
     ],
     "final": "🌐 Internet",
+    "auto_detect_interface": true,
     "default_domain_resolver": {
-      "server": "dns-local",
-      "rewrite_ttl": 60,
-      "client_subnet": "1.1.1.1"
-    },
-    "auto_detect_interface": true
+      "server": "dns-direct",
+      "rewrite_ttl": 60
+    }
   },
   "experimental": {
     "clash_api": {
