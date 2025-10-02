@@ -74,17 +74,6 @@
         "server": "dns-local"
       },
       {
-        "domain": [
-          "13.round.web.id",
-          "siren.nayumiwandi.workers.dev",
-          "shiroko.shirokoyumi.workers.dev",
-          "layla.mayumiyui.my.id",
-          "yumicftigarun.web.id",
-          "diona.sokove5110.workers.dev"
-        ],
-        "server": "google-dns"
-      },
-      {
         "query_type": [
           "A",
           "AAAA"
