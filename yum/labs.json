@@ -117,7 +117,7 @@
           "fbreg.com",
           "accountkit.com"
         ],
-        "server": "cloudflare-dns"
+        "server": "dns-xl-v6"
       },
       {
         "query_type": [
