@@ -528,7 +528,7 @@
           "messenger.com",
           "meta.com"
         ],
-        "type": "route",
+        "action": "route",
         "outbound": "🌐 Internet"
       },
       {
@@ -544,7 +544,7 @@
           "2a03:2880::/32",
           "2620:0:1c00::/40"
         ],
-        "type": "route",
+        "action": "route",
         "outbound": "🌐 Internet"
       },
       {
