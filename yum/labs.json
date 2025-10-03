@@ -39,13 +39,19 @@
       },
       {
         "type": "udp",
-        "tag": "dns-direct",
-        "server": "112.215.203.246",
+        "tag": "dns-xl-v6",
+        "domain_resolver": {
+          "server": "dns-xl-v4",
+          "strategy": "prefer_ipv4"
+        },
+        "server": "2400:9800:1b::246",
         "server_port": 53
       },
       {
-        "type": "local",
-        "tag": "dns-local"
+        "type": "udp",
+        "tag": "dns-xl-v4",
+        "server": "112.215.203.246",
+        "server_port": 53
       },
       {
         "type": "fakeip",
@@ -71,7 +77,47 @@
           "api24-normal-alisg.tiktokv.com",
           "grabacademyportal.grab.com"
         ],
-        "server": "dns-local"
+        "server": "dns-xl-v6"
+      },
+      {
+        "domain": [
+          "google.com",
+          "googleapis.com",
+          "gstatic.com",
+          "youtube.com",
+          "googlevideo.com",
+          "googleusercontent.com",
+          "ggpht.com"
+        ],
+        "server": "google-dns"
+      },
+      {
+        "domain_suffix": [
+          "facebook.com",
+          "fb.com",
+          "fbcdn.net",
+          "fbsbx.com",
+          "facebook.net",
+          "instagram.com",
+          "cdninstagram.com",
+          "instagr.am",
+          "whatsapp.com",
+          "whatsapp.net",
+          "wa.me",
+          "messenger.com",
+          "meta.com",
+          "oculus.com",
+          "graph.facebook.com",
+          "connect.facebook.net",
+          "static.xx.fbcdn.net",
+          "scontent.xx.fbcdn.net",
+          "m.facebook.com",
+          "mobile.facebook.com",
+          "tfbnw.net",
+          "fbreg.com",
+          "accountkit.com"
+        ],
+        "server": "cloudflare-dns"
       },
       {
         "query_type": [
@@ -470,6 +516,38 @@
         "action": "sniff"
       },
       {
+        "domain_suffix": [
+          "facebook.com",
+          "fb.com",
+          "fbcdn.net",
+          "fbsbx.com",
+          "instagram.com",
+          "cdninstagram.com",
+          "whatsapp.com",
+          "whatsapp.net",
+          "messenger.com",
+          "meta.com"
+        ],
+        "type": "route",
+        "outbound": "🌐 Internet"
+      },
+      {
+        "ip_cidr": [
+          "157.240.0.0/16",
+          "31.13.24.0/21",
+          "31.13.64.0/18",
+          "66.220.144.0/20",
+          "69.63.176.0/20",
+          "69.171.224.0/19",
+          "129.134.0.0/16",
+          "173.252.64.0/18",
+          "2a03:2880::/32",
+          "2620:0:1c00::/40"
+        ],
+        "type": "route",
+        "outbound": "🌐 Internet"
+      },
+      {
         "type": "logical",
         "mode": "and",
         "rules": [
@@ -580,7 +658,7 @@
     "final": "🌐 Internet",
     "auto_detect_interface": true,
     "default_domain_resolver": {
-      "server": "dns-direct",
+      "server": "dns-xl-v6",
       "rewrite_ttl": 60
     }
   },
