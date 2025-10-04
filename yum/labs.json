@@ -163,14 +163,14 @@
         "Amazon Data Services Singapore",
         "ID Rumahweb Indonesia WC",
         "Experiment-21",
-        "PT Mitra Visioner Vless"
+        "PT Mitra Visioner Vless",
+        "DOH usat Media Indonesia WS NTLS"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
     },
-    
     {
       "type": "urltest",
       "tag": "⚙️ UDP",
@@ -295,7 +295,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy\u0026proxyip=149.129.250.8:443",
+        "path": "?mode=proxy&proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
         }
@@ -412,9 +412,34 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy\u0026proxyip=203.194.112.119:8443",
+        "path": "?mode=proxy&proxyip=203.194.112.119:8443",
         "headers": {
           "Host": "nontontv.vidio.com.viora.ruriaylin.qzz.io"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "DOH usat Media Indonesia WS NTLS",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "uuid": "fc60147e-76b8-4bc5-b691-90b2da79e3d2",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "kagura.mayumiyui.workers.dev",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/103.6.207.108-8080",
+        "headers": {
+          "Host": "kagura.mayumiyui.workers.dev"
         }
       }
     }
