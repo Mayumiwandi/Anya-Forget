@@ -9,8 +9,23 @@
     "servers": [
       {
         "type": "https",
-        "tag": "google-dns",
+        "tag": "cloudflare-dns",
         "detour": "🚀 Latency",
+        "domain_resolver": {
+          "server": "cloudflare-udp",
+          "strategy": "prefer_ipv4"
+        },
+        "server": "1.1.1.1",
+        "server_port": 443
+      },
+      {
+        "type": "udp",
+        "tag": "cloudflare-udp",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "https",
+        "tag": "google-dns",
         "domain_resolver": {
           "server": "google-udp",
           "strategy": "prefer_ipv4"
@@ -21,21 +36,6 @@
         "type": "udp",
         "tag": "google-udp",
         "server": "8.8.8.8"
-      },
-      {
-        "type": "https",
-        "tag": "cloudflare-dns",
-        "detour": "🌐 Internet",
-        "domain_resolver": {
-          "server": "cloudflare-udp",
-          "strategy": "prefer_ipv4"
-        },
-        "server": "cloudflare-dns.com"
-      },
-      {
-        "type": "udp",
-        "tag": "cloudflare-udp",
-        "server": "1.1.1.1"
       },
       {
         "type": "udp",
@@ -92,32 +92,21 @@
         "server": "google-dns"
       },
       {
-        "domain_suffix": [
-          "facebook.com",
-          "fb.com",
-          "fbcdn.net",
-          "fbsbx.com",
-          "facebook.net",
-          "instagram.com",
-          "cdninstagram.com",
-          "instagr.am",
-          "whatsapp.com",
-          "whatsapp.net",
-          "wa.me",
-          "messenger.com",
-          "meta.com",
-          "oculus.com",
-          "graph.facebook.com",
-          "connect.facebook.net",
-          "static.xx.fbcdn.net",
-          "scontent.xx.fbcdn.net",
-          "m.facebook.com",
-          "mobile.facebook.com",
-          "tfbnw.net",
-          "fbreg.com",
-          "accountkit.com"
+        "domain_regex": [
+          "^fbcdn-.*\\.akamaihd\\.net$",
+          "^(.*\\.)?faceb[o0a][o0a]?k\\.(com|net|org|info|us|cc|tv|shop|design|wang|hu|nl|se|br|ca)$",
+          "^(.*\\.)?fb\\.(com|me|gg|watch|careers)$",
+          "^(.*\\.)?thefacebook\\.(com|net)$",
+          "^(.*\\.)?internet\\.org$",
+          "^(.*\\.)?freebasics\\.(com|net)$",
+          "^(.*\\.)?workplace\\.com$",
+          "^(.*\\.)?facebookwork\\.com$",
+          "^(.*\\.)?zuckerberg\\.(com|net)$"
         ],
-        "server": "dns-xl-v6"
+        "package_name": [
+          "com.facebook.katana"
+        ],
+        "server": "cloudflare-dns"
       },
       {
         "query_type": [
@@ -161,7 +150,6 @@
       "tag": "🌐 Internet",
       "outbounds": [
         "🚀 Latency",
-        "📍 Region",
         "⚙️ UDP"
       ],
       "default": "🚀 Latency"
@@ -182,15 +170,7 @@
       "tolerance": 60,
       "idle_timeout": "5m0s"
     },
-    {
-      "type": "selector",
-      "tag": "📍 Region",
-      "outbounds": [
-        "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
-        "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
-        "ID Rumahweb Indonesia WS TLS [diona]"
-      ]
-    },
+    
     {
       "type": "urltest",
       "tag": "⚙️ UDP",
@@ -300,75 +280,6 @@
     },
     {
       "type": "vless",
-      "tag": "9 🇸🇬 Alibaba Cloud Singapore Private Limited WS TLS [diona]",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
-      "tls": {
-        "enabled": true,
-        "server_name": "diona.sokove5110.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/8.219.126.137-491",
-        "headers": {
-          "Host": "diona.sokove5110.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "7 🇸🇬 Amazon Data Services Singapore WS TLS [diona]",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "password": "1baf565b-f174-42b0-bea1-33cb5d52bc4b",
-      "tls": {
-        "enabled": true,
-        "server_name": "diona.sokove5110.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/13.250.131.37-443",
-        "headers": {
-          "Host": "diona.sokove5110.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "ID Rumahweb Indonesia WS TLS [diona]",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "password": "9ea77836-599a-4632-9138-917e5ab0c048",
-      "tls": {
-        "enabled": true,
-        "server_name": "diona.sokove5110.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/203.194.112.119-2053",
-        "headers": {
-          "Host": "diona.sokove5110.workers.dev"
-        }
-      }
-    },
-    {
-      "type": "vless",
       "tag": "Experiment-21",
       "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
@@ -384,7 +295,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy&proxyip=149.129.250.8:443",
+        "path": "?mode=proxy\u0026proxyip=149.129.250.8:443",
         "headers": {
           "Host": "penaple.cfpaid03.workers.dev"
         }
@@ -487,15 +398,13 @@
     {
       "type": "vless",
       "tag": "PT Mitra Visioner Vless",
+      "tcp_fast_open": true,
       "server": "nontontv.vidio.com",
       "server_port": 443,
-      "tcp_fast_open": true,
       "uuid": "c31096b3-3b52-469c-a531-103002848c98",
-      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "nontontv.vidio.com.viora.ruriaylin.qzz.io",
-        "insecure": false,
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
@@ -503,7 +412,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "?mode=proxy&proxyip=203.194.112.119:8443",
+        "path": "?mode=proxy\u0026proxyip=203.194.112.119:8443",
         "headers": {
           "Host": "nontontv.vidio.com.viora.ruriaylin.qzz.io"
         }
@@ -516,33 +425,22 @@
         "action": "sniff"
       },
       {
-        "domain_suffix": [
-          "facebook.com",
-          "fb.com",
-          "fbcdn.net",
-          "fbsbx.com",
-          "instagram.com",
-          "cdninstagram.com",
-          "whatsapp.com",
-          "whatsapp.net",
-          "messenger.com",
-          "meta.com"
+        "domain_regex": [
+          "^fbcdn-.*\\.akamaihd\\.net$",
+          "^(.*\\.)?faceb[o0a][o0a]?k\\.(com|net|org|info|us|cc|tv|shop|design|wang|hu|nl|se|br|ca)$",
+          "^(.*\\.)?fb\\.(com|me|gg|watch|careers)$",
+          "^(.*\\.)?thefacebook\\.(com|net)$",
+          "^(.*\\.)?internet\\.org$",
+          "^(.*\\.)?freebasics\\.(com|net)$",
+          "^(.*\\.)?workplace\\.com$",
+          "^(.*\\.)?facebookwork\\.com$",
+          "^(.*\\.)?zuckerberg\\.(com|net)$"
         ],
-        "action": "route",
-        "outbound": "🌐 Internet"
-      },
-      {
-        "ip_cidr": [
-          "157.240.0.0/16",
-          "31.13.24.0/21",
-          "31.13.64.0/18",
-          "66.220.144.0/20",
-          "69.63.176.0/20",
-          "69.171.224.0/19",
-          "129.134.0.0/16",
-          "173.252.64.0/18",
-          "2a03:2880::/32",
-          "2620:0:1c00::/40"
+        "package_name": [
+          "com.facebook.katana"
+        ],
+        "rule_set": [
+          "FB-CIDR"
         ],
         "action": "route",
         "outbound": "🌐 Internet"
@@ -653,6 +551,15 @@
           }
         ],
         "action": "hijack-dns"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "FB-CIDR",
+        "format": "source",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/facebook.json",
+        "download_detour": "🌐 Internet"
       }
     ],
     "final": "🌐 Internet",
