@@ -178,7 +178,8 @@
         "(Tokisakikurumi) [VLESS - ws] TLS ✅",
         "(Tokisakikurumi) [Trojan - ws] TLS ✅",
         "@xlaxiataexcl",
-        "Mixsue-WS"
+        "Mixsue-WS",
+        "VLESS 2025-11-16 port 80"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -440,6 +441,25 @@
         "path": "/103.6.207.108-8080",
         "headers": {
           "Host": "kagura.mayumiyui.workers.dev"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "VLESS 2025-11-16 port 80",
+      "server": "nontontv.vidio.com",
+      "server_port": 80,
+      "tcp_fast_open": true,
+      "uuid": "a2088892-07c5-4c54-8a10-4a4b6ebefab6",
+      "flow": "",
+      "tls": {
+        "enabled": false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vless",
+        "headers": {
+          "Host": "waifu.kurumi.biz.id"
         }
       }
     }
