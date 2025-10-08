@@ -28,7 +28,7 @@
         "tag": "google-dns",
         "domain_resolver": {
           "server": "google-udp",
-          "strategy": "dns-xl-v6"
+          "strategy": "prefer_ipv4"
         },
         "server": "dns.google"
       },
