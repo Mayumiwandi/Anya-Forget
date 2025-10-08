@@ -179,7 +179,8 @@
         "(Tokisakikurumi) [Trojan - ws] TLS ✅",
         "@xlaxiataexcl",
         "VLESS 2025-11-16 port 80",
-        "vmess UDP 2025-11-16"
+        "vmess UDP 2025-11-16",
+        "iptunnel+UDP"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -462,6 +463,31 @@
         "path": "/vmess",
         "headers": {
           "Host": "waifu.kurumi.biz.id"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "iptunnel+UDP",
+      "server": "nontontv.vidio.com",
+      "server_port": 443,
+      "uuid": "027e3f12-0ea2-413c-82fb-23f0fb78b8a6",
+      "alter_id": 0,
+      "security": "auto",
+      "tcp_fast_open": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "sg.iptunnel.eu.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/vmess",
+        "headers": {
+          "Host": "sg.iptunnel.eu.org"
         }
       }
     }
