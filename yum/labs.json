@@ -24,20 +24,6 @@
         "server": "1.1.1.1"
       },
       {
-        "type": "https",
-        "tag": "google-dns",
-        "domain_resolver": {
-          "server": "google-udp",
-          "strategy": "prefer_ipv4"
-        },
-        "server": "dns.google"
-      },
-      {
-        "type": "udp",
-        "tag": "google-udp",
-        "server": "8.8.8.8"
-      },
-      {
         "type": "udp",
         "tag": "dns-xl-v6",
         "domain_resolver": {
@@ -62,32 +48,26 @@
     ],
     "rules": [
       {
-        "domain": [
-          "plus-store.naver.com",
-          "ava.game.naver.com",
-          "investor.fb.com",
-          "investors.spotify.com",
-          "nontontv.vidio.com",
-          "support.vidio.com",
-          "img.email2.vidio.com",
-          "quiz.int.vidio.com",
-          "quiz.vidio.com",
-          "v8.kuramanime.run",
-          "kuramanime.run",
-          "api24-normal-alisg.tiktokv.com",
-          "grabacademyportal.grab.com"
-        ],
-        "server": "dns-xl-v6"
-      },
-      {
-        "domain": [
-          "google.com",
-          "googleapis.com",
-          "gstatic.com",
+        "domain_suffix": [
           "youtube.com",
+          "www.youtube.com",
+          "m.youtube.com",
+          "ytimg.com",
+          "i.ytimg.com",
+          "s.ytimg.com",
+          "youtube-nocookie.com",
           "googlevideo.com",
-          "googleusercontent.com",
-          "ggpht.com"
+          "mail.google.com",
+          "gmail.com",
+          "google.com",
+          "google.co.id"
+        ],
+        "package_name": [
+          "com.android.vending",
+          "com.android.chrome",
+          "com.google.android.gm",
+          "app.revanced.android.youtube",
+          "app.revanced.android.gms"
         ],
         "server": "google-dns"
       },
@@ -106,7 +86,7 @@
         "package_name": [
           "com.facebook.katana"
         ],
-        "server": "cloudflare-dns"
+        "server": "dns-xl-v6"
       },
       {
         "query_type": [
