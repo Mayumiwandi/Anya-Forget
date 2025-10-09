@@ -48,28 +48,6 @@
     ],
     "rules": [
       {
-        "domain_suffix": [
-          "youtube.com",
-          "www.youtube.com",
-          "m.youtube.com",
-          "ytimg.com",
-          "i.ytimg.com",
-          "s.ytimg.com",
-          "youtube-nocookie.com",
-          "googlevideo.com",
-          "mail.google.com",
-          "gmail.com",
-          "google.com",
-          "google.co.id"
-        ],
-        "domain": [
-          "youtube.com",
-          "google.com",
-          "google.co.id"
-        ],
-        "server": "cloudflare-dns"
-      },
-      {
         "domain_regex": [
           "^fbcdn-.*\\.akamaihd\\.net$",
           "^(.*\\.)?faceb[o0a][o0a]?k\\.(com|net|org|info|us|cc|tv|shop|design|wang|hu|nl|se|br|ca)$",
