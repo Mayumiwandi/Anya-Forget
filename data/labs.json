@@ -114,7 +114,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "Amazon Data Services Singapore",
         "ID Rumahweb Indonesia WC",
         "Experiment-21",
         "PT Mitra Visioner Vless",
@@ -140,30 +139,6 @@
       "interval": "3m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
-    },
-    {
-      "type": "vmess",
-      "tag": "Amazon Data Services Singapore",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "8d15ed25-c871-4b49-b990-9275d9f23b44",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "verstia.sokove5110.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/13.250.131.37-443",
-        "headers": {
-          "Host": "verstia.sokove5110.workers.dev"
-        }
-      }
     },
     {
       "type": "vless",
