@@ -114,7 +114,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "vmess Besok ID",
         "Amazon Data Services Singapore",
         "ID Rumahweb Indonesia WC",
         "Experiment-21",
@@ -141,30 +140,6 @@
       "interval": "3m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
-    },
-    {
-      "type": "vmess",
-      "tag": "vmess Besok ID",
-      "tcp_fast_open": true,
-      "server": "support.vidio.com",
-      "server_port": 443,
-      "uuid": "3e10b87f-fac4-464c-970e-65cc0e4a54d2",
-      "security": "zero",
-      "tls": {
-        "enabled": true,
-        "server_name": "beatrice.shirokoyumi.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/43.218.77.16-1443",
-        "headers": {
-          "Host": "beatrice.shirokoyumi.workers.dev"
-        }
-      }
     },
     {
       "type": "vmess",
