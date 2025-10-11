@@ -115,7 +115,12 @@
       "tag": "🚀 Latency",
       "outbounds": [
         "ID MITRA IP4 LINE viora-ipv4-1",
-        "ID MITRA IP4 LINE viora"
+        "ID MITRA IP4 LINE viora",
+        "DOH Amazon ID Line sisina",
+        "Auto ID Line sisina",
+        "[ID TOWER LINE]",
+        "ID-Zero Line",
+        "MY-Line-Zero"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -329,6 +334,128 @@
         "path": "/vmess",
         "headers": {
           "Host": "sg.iptunnel.eu.org"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "DOH Amazon ID Line sisina",
+      "server": "store.linefriends.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "password": "86768774-70b2-4c15-80c3-02066fb1e3b6",
+      "tls": {
+        "enabled": true,
+        "server_name": "store.linefriends.com.sisina.mayumi.qzz.io",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/43.218.77.16-443",
+        "headers": {
+          "Host": "store.linefriends.com.sisina.mayumi.qzz.io"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "Auto ID Line sisina",
+      "server": "store.linefriends.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "password": "86768774-70b2-4c15-80c3-02066fb1e3b6",
+      "tls": {
+        "enabled": true,
+        "server_name": "store.linefriends.com.sisina.mayumi.qzz.io",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ID",
+        "headers": {
+          "Host": "store.linefriends.com.sisina.mayumi.qzz.io"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "[ID TOWER LINE]",
+      "server": "ava.game.naver.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "password": "12aca3c6-6960-490a-9baf-2316a688fd47",
+      "tls": {
+        "enabled": true,
+        "server_name": "ava.game.naver.com.gamang.gpj1.dpdns.org",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/Free-VPN-Geo-Project/149.129.250.8-443",
+        "headers": {
+          "Host": "ava.game.naver.com.gamang.gpj1.dpdns.org"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "ID-Zero Line",
+      "server": "ava.game.naver.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "uuid": "e1145d13-877e-470c-887e-0badb32c3a1a",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "ava.game.naver.com.zerostore.org",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ZEROSTORE/203.194.112.119-2053",
+        "headers": {
+          "Host": "ava.game.naver.com.zerostore.org"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "MY-Line-Zero",
+      "server": "ava.game.naver.com",
+      "server_port": 443,
+      "tcp_fast_open": true,
+      "uuid": "e1145d13-877e-470c-887e-0badb32c3a1a",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "ava.game.naver.com.zerostore.org",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ZEROSTORE/156.244.1.250-8443",
+        "headers": {
+          "Host": "ava.game.naver.com.zerostore.org"
         }
       }
     }
