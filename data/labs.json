@@ -114,7 +114,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "Experiment-21",
         "PT Mitra Visioner Vless",
         "DOH usat Media Indonesia WS NTLS"
       ],
@@ -138,29 +137,6 @@
       "interval": "3m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
-    },
-    {
-      "type": "vless",
-      "tag": "Experiment-21",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "12592a6d-6c02-41db-8d95-176a908fe8e0",
-      "tls": {
-        "enabled": true,
-        "server_name": "penaple.cfpaid03.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "?mode=proxy&proxyip=149.129.250.8:443",
-        "headers": {
-          "Host": "penaple.cfpaid03.workers.dev"
-        }
-      }
     },
     {
       "type": "vless",
