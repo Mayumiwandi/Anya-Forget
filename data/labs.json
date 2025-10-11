@@ -114,7 +114,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "PT Mitra Visioner Vless",
         "DOH usat Media Indonesia WS NTLS"
       ],
       "url": "https://connectivitycheck.gstatic.com/generate_204",
@@ -206,29 +205,6 @@
         "path": "/trojanws",
         "headers": {
           "Host": "id2.bvip.my.id"
-        }
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "PT Mitra Visioner Vless",
-      "tcp_fast_open": true,
-      "server": "nontontv.vidio.com",
-      "server_port": 443,
-      "uuid": "c31096b3-3b52-469c-a531-103002848c98",
-      "tls": {
-        "enabled": true,
-        "server_name": "nontontv.vidio.com.viora.ruriaylin.qzz.io",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "?mode=proxy&proxyip=203.194.112.119:8443",
-        "headers": {
-          "Host": "nontontv.vidio.com.viora.ruriaylin.qzz.io"
         }
       }
     },
