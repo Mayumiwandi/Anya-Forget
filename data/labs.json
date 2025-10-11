@@ -114,7 +114,6 @@
       "type": "urltest",
       "tag": "🚀 Latency",
       "outbounds": [
-        "ID Coba Vless",
         "vmess Besok ID",
         "Amazon Data Services Singapore",
         "ID Rumahweb Indonesia WC",
@@ -142,28 +141,6 @@
       "interval": "3m0s",
       "tolerance": 60,
       "idle_timeout": "5m0s"
-    },
-    {
-      "type": "vless",
-      "tag": "ID Coba Vless",
-      "server": "support.vidio.com",
-      "server_port": 443,
-      "uuid": "eff06b8e-5c92-4627-b66f-2b94acca406a",
-      "tls": {
-        "enabled": true,
-        "server_name": "nautica-pred.vokip29018.workers.dev",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/149.129.250.8-443",
-        "headers": {
-          "Host": "nautica-pred.vokip29018.workers.dev"
-        }
-      }
     },
     {
       "type": "vmess",
